@@ -45,4 +45,14 @@ public class PointsAndVectorsMaths
         RayVector expected = new(-2, -4, -6);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void Subtracting_Vector_from_the_Zero_Vector()
+    {
+        RayVector vector1 = new(0, 0, 0);
+        RayVector vector2 = new(1, -2, 3);
+        var actual = vector1 - vector2;
+        RayVector expected = new(-1, 2, -3);
+        Assert.Equal(expected, actual);
+    }
 }
