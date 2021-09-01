@@ -15,4 +15,14 @@ public class PointsAndVectorsMaths
         Assert.True(expected == actual);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void Subtracting_two_Points()
+    {
+        RayPoint point1 = new(3, 2, 1);
+        RayPoint point2 = new(5, 6, 7);
+        RayTuple actual = point1 - point2;
+        RayVector expected = new(-2, -4, -6);
+        Assert.Equal(expected, actual);
+    }
 }
