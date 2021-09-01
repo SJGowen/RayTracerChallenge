@@ -44,6 +44,12 @@ public class PointsAndVectors
     }
 }
 
+public class RayVector : RayTuple
+{
+    public RayVector(double x, double y, double z) : base(x, y, z, 0.0) { }
+    public RayVector(int x, int y, int z) : base(x, y, z, 0) { }
+}
+
 public class RayPoint : RayTuple
 {
     public RayPoint(double x, double y, double z) : base(x, y, z, 1.0) { }
