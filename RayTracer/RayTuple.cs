@@ -1,6 +1,11 @@
 ﻿namespace RayTracer;
-public record RayTuple
+public class RayTuple
 {
+    public double X { get; }
+    public double Y { get; }
+    public double Z { get; }
+    public double W { get; }
+
     public RayTuple(double x, double y, double z, double w)
     {
         X = x;
@@ -17,10 +22,10 @@ public record RayTuple
         W = w;
     }
 
-    public double X { get; }
-    public double Y { get; }
-    public double Z { get; }
-    public double W { get; }
+    public override string ToString()
+    {
+        return $"({X},{Y},{Z},{Z})";
+    }
 
     public bool IsPoint => W == 1.0;
 
@@ -30,7 +35,14 @@ public record RayTuple
     public static bool Equal(double a, double b) => Math.Abs(a - b) <= Epsilon;
     public static bool Equal(int a, int b) => Math.Abs(a - b) <= Epsilon;
 
-    public bool IsEqual(RayTuple tuple) => Equal(X, tuple.X) && Equal(Y, tuple.Y) && Equal(Z, tuple.Z) && Equal(W, tuple.W);
+    public bool IsEqual(object? obj) => obj is RayTuple tuple && Equal(X, tuple.X) && Equal(Y, tuple.Y) && Equal(Z, tuple.Z) && Equal(W, tuple.W);
+
+    public override bool Equals(object? obj) => obj is RayTuple tuple && this.IsEqual(tuple);
+
+    public override int GetHashCode() => (X, Y, Z, W).GetHashCode();
+
+    public static bool operator ==(RayTuple tuple1, RayTuple tuple2) => tuple1.IsEqual(tuple2);
+    public static bool operator !=(RayTuple tuple1, RayTuple tuple2) => !tuple1.IsEqual(tuple2);
 
     public static RayTuple operator +(RayTuple tuple) => tuple;
     public static RayTuple operator +(RayTuple tuple1, RayTuple tuple2) => 
