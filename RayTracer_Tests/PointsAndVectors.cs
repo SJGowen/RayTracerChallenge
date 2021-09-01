@@ -5,7 +5,7 @@ namespace RayTracer_Tests;
 public class PointsAndVectors
 {
     [Fact]
-    public void A_Tuple_with_W_equal_1_is_a_Point()
+    public void Tuple_with_W_equal_1_is_Point()
     {
         RayTuple tuple = new(4.3, -4.2, 3.1, 1.0);
         Assert.Equal(4.3, tuple.X);
@@ -17,7 +17,7 @@ public class PointsAndVectors
     }
 
     [Fact]
-    public void A_Tuple_with_W_equal_0_is_a_Vector()
+    public void Tuple_with_W_equal_0_is_Vector()
     {
         RayTuple tuple = new(4.3, -4.2, 3.1, 0.0);
         Assert.Equal(4.3, tuple.X);
@@ -29,7 +29,7 @@ public class PointsAndVectors
     }
 
     [Fact]
-    public void A_Point_creates_Tuple_with_W_equal_1()
+    public void Point_creates_Tuple_with_W_equal_1()
     {
         RayPoint point = new(4, -4, 3);
         RayTuple tuple = new(4, -4, 3, 1);
@@ -37,7 +37,7 @@ public class PointsAndVectors
     }
 
     [Fact]
-    public void A_Vector_creates_Tuple_with_W_equal_0()
+    public void Vector_creates_Tuple_with_W_equal_0()
     {
         RayVector vector = new(4, -4, 3);
         RayTuple tuple = new(4, -4, 3, 0);
