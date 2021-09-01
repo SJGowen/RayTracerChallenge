@@ -24,7 +24,7 @@ public class RayTuple
 
     public override string ToString()
     {
-        return $"({X},{Y},{Z},{Z})";
+        return $"({X},{Y},{Z},{W})";
     }
 
     public bool IsPoint => W == 1.0;
@@ -52,4 +52,7 @@ public class RayTuple
         new(-tuple.X, -tuple.Y, -tuple.Z, -tuple.W);
     public static RayTuple operator -(RayTuple tuple1, RayTuple tuple2) =>
         new(tuple1.X - tuple2.X, tuple1.Y - tuple2.Y, tuple1.Z - tuple2.Z, tuple1.W - tuple2.W);
+
+    public static RayTuple operator *(RayTuple tuple, double multiplier) =>
+        new(tuple.X * multiplier, tuple.Y * multiplier, tuple.Z * multiplier, tuple.W * multiplier);
 }
