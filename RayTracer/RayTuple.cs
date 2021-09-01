@@ -31,4 +31,8 @@ public class RayTuple
     public static bool Equal(int a, int b) => Math.Abs(a - b) <= Epsilon;
 
     public bool IsEqual(RayTuple tuple) => Equal(X, tuple.X) && Equal(Y, tuple.Y) && Equal(Z, tuple.Z) && Equal(W, tuple.W);
+
+    public static RayTuple operator +(RayTuple tuple) => tuple;
+    public static RayTuple operator +(RayTuple tuple1, RayTuple tuple2) => 
+        new(tuple1.X + tuple2.X, tuple1.Y + tuple2.Y, tuple1.Z + tuple2.Z, tuple1.W + tuple2.W);
 }
