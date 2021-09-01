@@ -36,9 +36,23 @@ public class PointsAndVectors
     }
 }
 
+public class RayPoint : RayTuple
+{
+    public RayPoint(double x, double y, double z) : base(x, y, z, 1.0) { }
+    public RayPoint(int x, int y, int z) : base(x, y, z, 1) { }
+}
+
 public class RayTuple
 {
     public RayTuple(double x, double y, double z, double w)
+    {
+        X = x;
+        Y = y;
+        Z = z;
+        W = w;
+    }
+
+    public RayTuple(int x, int y, int z, int w)
     {
         X = x;
         Y = y;
@@ -54,4 +68,6 @@ public class RayTuple
     public bool IsPoint => W == 1.0;
 
     public bool IsVector => W == 0.0;
+
+    public bool IsEqual(RayTuple tuple) => X == tuple.X && Y == tuple.Y && Z == tuple.Z && W == tuple.W;
 }
