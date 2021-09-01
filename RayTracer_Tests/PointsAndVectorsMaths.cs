@@ -55,4 +55,13 @@ public class PointsAndVectorsMaths
         RayVector expected = new(-1, 2, -3);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void Negating_Tuple()
+    {
+        RayTuple tuple = new(1, -2, 3, -4);
+        var actual = -tuple;
+        RayTuple expected = new(-1, 2, -3, 4);
+        Assert.Equal(expected, actual);
+    }
 }
