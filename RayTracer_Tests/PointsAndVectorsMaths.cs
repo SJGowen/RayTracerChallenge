@@ -12,5 +12,7 @@ public class PointsAndVectorsMaths
         RayTuple actual = tuple1 + tuple2;
         RayTuple expected = new(1, 1, 6, 1);
         Assert.True(expected.IsEqual(actual));
+        Assert.True(expected == actual);
+        Assert.Equal(expected, actual);
     }
 }

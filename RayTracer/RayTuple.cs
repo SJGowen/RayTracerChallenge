@@ -1,5 +1,5 @@
 ﻿namespace RayTracer;
-public class RayTuple
+public record RayTuple
 {
     public RayTuple(double x, double y, double z, double w)
     {
