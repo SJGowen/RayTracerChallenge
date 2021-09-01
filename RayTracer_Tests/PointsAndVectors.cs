@@ -34,6 +34,14 @@ public class PointsAndVectors
         RayTuple tuple = new(4, -4, 3, 1);
         Assert.True(point.IsEqual(tuple));
     }
+
+    [Fact]
+    public void A_Vector_creates_Tuple_with_W_equal_0()
+    {
+        RayVector vector = new(4, -4, 3);
+        RayTuple tuple = new(4, -4, 3, 0);
+        Assert.True(vector.IsEqual(tuple));
+    }
 }
 
 public class RayPoint : RayTuple
