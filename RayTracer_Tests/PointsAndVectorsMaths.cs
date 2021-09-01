@@ -35,4 +35,14 @@ public class PointsAndVectorsMaths
         RayPoint expected = new(-2, -4, -6);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void Subtracting_two_Vectors()
+    {
+        RayVector vector1 = new(3, 2, 1);
+        RayVector vector2 = new(5, 6, 7);
+        var actual = vector1 - vector2;
+        RayVector expected = new(-2, -4, -6);
+        Assert.Equal(expected, actual);
+    }
 }
