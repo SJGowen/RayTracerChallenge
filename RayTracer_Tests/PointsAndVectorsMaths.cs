@@ -82,4 +82,13 @@ public class PointsAndVectorsMaths
         RayTuple expected = new(0.5, -1, 1.5, -2);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void Dividing_Tuple_by_Scalar()
+    {
+        RayTuple tuple = new(1, -2, 3, -4);
+        var actual = tuple / 2;
+        RayTuple expected = new(0.5, -1, 1.5, -2);
+        Assert.Equal(expected, actual);
+    }
 }
