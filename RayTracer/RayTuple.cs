@@ -26,5 +26,9 @@ public class RayTuple
 
     public bool IsVector => W == 0.0;
 
-    public bool IsEqual(RayTuple tuple) => X == tuple.X && Y == tuple.Y && Z == tuple.Z && W == tuple.W;
+    private const double Epsilon = 0.00001;
+    public static bool Equal(double a, double b) => Math.Abs(a - b) <= Epsilon;
+    public static bool Equal(int a, int b) => Math.Abs(a - b) <= Epsilon;
+
+    public bool IsEqual(RayTuple tuple) => Equal(X, tuple.X) && Equal(Y, tuple.Y) && Equal(Z, tuple.Z) && Equal(W, tuple.W);
 }
