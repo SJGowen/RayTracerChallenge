@@ -26,6 +26,14 @@ public class PointsAndVectors
         Assert.False(tuple.IsPoint);
         Assert.True(tuple.IsVector);
     }
+
+    [Fact]
+    public void A_Point_creates_Tuple_with_W_equal_1()
+    {
+        RayPoint point = new(4, -4, 3);
+        RayTuple tuple = new(4, -4, 3, 1);
+        Assert.True(point.IsEqual(tuple));
+    }
 }
 
 public class RayTuple
