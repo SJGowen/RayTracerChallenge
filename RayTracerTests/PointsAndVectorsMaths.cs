@@ -1,11 +1,11 @@
 ﻿using RayTracer;
 using Xunit;
 
-namespace RayTracer_Tests;
+namespace RayTracerTests;
 public class PointsAndVectorsMaths
 {
     [Fact]
-    public void Adding_two_Tuples()
+    public void AddingTwoTuples()
     {
         RayTuple tuple1 = new(3, -2, 5, 1);
         RayTuple tuple2 = new(-2, 3, 1, 0);
@@ -17,7 +17,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Subtracting_two_Points()
+    public void SubtractingTwoPoints()
     {
         RayPoint point1 = new(3, 2, 1);
         RayPoint point2 = new(5, 6, 7);
@@ -27,7 +27,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Subtracting_Vector_from_Point()
+    public void SubtractingVectorFromPoint()
     {
         RayPoint point1 = new(3, 2, 1);
         RayVector vector2 = new(5, 6, 7);
@@ -37,7 +37,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Subtracting_two_Vectors()
+    public void SubtractingTwoVectors()
     {
         RayVector vector1 = new(3, 2, 1);
         RayVector vector2 = new(5, 6, 7);
@@ -47,7 +47,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Subtracting_Vector_from_the_Zero_Vector()
+    public void SubtractingVectorFromTheZeroVector()
     {
         RayVector vector1 = new(0, 0, 0);
         RayVector vector2 = new(1, -2, 3);
@@ -57,7 +57,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Negating_Tuple()
+    public void NegatingTuple()
     {
         RayTuple tuple = new(1, -2, 3, -4);
         var actual = -tuple;
@@ -66,7 +66,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Multiplying_Tuple_by_Scalar()
+    public void MultiplyingTupleByScalar()
     {
         RayTuple tuple = new(1, -2, 3, -4);
         var actual = tuple * 3.5;
@@ -75,7 +75,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Multiplying_Tuple_by_Fraction()
+    public void MultiplyingTupleByFraction()
     { 
         RayTuple tuple = new(1, -2, 3, -4);
         var actual = tuple * 0.5;
@@ -84,7 +84,7 @@ public class PointsAndVectorsMaths
     }
 
     [Fact]
-    public void Dividing_Tuple_by_Scalar()
+    public void DividingTupleByScalar()
     {
         RayTuple tuple = new(1, -2, 3, -4);
         var actual = tuple / 2;

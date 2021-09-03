@@ -1,11 +1,11 @@
 ﻿using RayTracer;
 using Xunit;
 
-namespace RayTracer_Tests;
+namespace RayTracerTests;
 public class MagnitudeNormalisationEtc
 {
     [Fact]
-    public void Magnitude_of_Vector_1_0_0()
+    public void MagnitudeOfVector100()
     {
         RayVector vector = new(1, 0, 0);
         var actual = RayVector.Magnitude(vector);
@@ -14,7 +14,7 @@ public class MagnitudeNormalisationEtc
     }
 
     [Fact]
-    public void Magnitude_of_Vector_0_1_0()
+    public void MagnitudeOfVector010()
     {
         RayVector vector = new(0, 1, 0);
         var actual = RayVector.Magnitude(vector);
@@ -23,7 +23,7 @@ public class MagnitudeNormalisationEtc
     }
 
     [Fact]
-    public void Magnitude_of_Vector_0_0_1()
+    public void MagnitudeOfVector001()
     {
         RayVector vector = new(0, 0, 1);
         var actual = RayVector.Magnitude(vector);
@@ -32,7 +32,7 @@ public class MagnitudeNormalisationEtc
     }
 
     [Fact]
-    public void Magnitude_of_Vector_1_2_3()
+    public void MagnitudeOfVector123()
     {
         RayVector vector = new(1, 2, 3);
         var actual = RayVector.Magnitude(vector);
@@ -41,7 +41,7 @@ public class MagnitudeNormalisationEtc
     }
 
     [Fact]
-    public void Magnitude_of_NegativeVector_1_2_3()
+    public void MagnitudeOfNegativeVector123()
     {
         RayVector vector = new(-1, -2, -3);
         var actual = RayVector.Magnitude(vector);

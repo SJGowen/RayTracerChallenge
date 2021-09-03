@@ -1,11 +1,11 @@
 using RayTracer;
 using Xunit;
 
-namespace RayTracer_Tests;
+namespace RayTracerTests;
 public class PointsAndVectors
 {
     [Fact]
-    public void Tuple_with_W_equal_1_is_Point()
+    public void TupleWithWEqual1IsPoint()
     {
         RayTuple tuple = new(4.3, -4.2, 3.1, 1.0);
         Assert.Equal(4.3, tuple.X);
@@ -17,7 +17,7 @@ public class PointsAndVectors
     }
 
     [Fact]
-    public void Tuple_with_W_equal_0_is_Vector()
+    public void TupleWithWEqual0IsVector()
     {
         RayTuple tuple = new(4.3, -4.2, 3.1, 0.0);
         Assert.Equal(4.3, tuple.X);
@@ -29,7 +29,7 @@ public class PointsAndVectors
     }
 
     [Fact]
-    public void Point_creates_Tuple_with_W_equal_1()
+    public void PointCreatesTupleWithWEqual1()
     {
         RayPoint point = new(4, -4, 3);
         RayTuple tuple = new(4, -4, 3, 1);
@@ -37,7 +37,7 @@ public class PointsAndVectors
     }
 
     [Fact]
-    public void Vector_creates_Tuple_with_W_equal_0()
+    public void VectorCreatesTupleWithWEqual0()
     {
         RayVector vector = new(4, -4, 3);
         RayTuple tuple = new(4, -4, 3, 0);
