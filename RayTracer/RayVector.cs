@@ -12,4 +12,9 @@ public class RayVector : RayTuple
 
     public static double DotProduct(RayVector vector1, RayVector vector2) =>
         vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z + vector1.W * vector2.W;
+
+    public static RayVector CrossProduct(RayVector vector1, RayVector vector2) =>
+        new(vector1.Y * vector2.Z - vector1.Z * vector2.Y, 
+            vector1.Z * vector2.X - vector1.X * vector2.Z, 
+            vector1.X * vector2.Y - vector1.Y * vector2.X);
 }
