@@ -22,5 +22,14 @@ public class VectorNormalisation
         RayVector expected = new(1 / Math.Sqrt(14), 2 / Math.Sqrt(14), 3 / Math.Sqrt(14));
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void MagnitudeOfNormalisedVectorEquals1()
+    {
+        RayVector vector = new(1, 2, 3);
+        RayVector norm = RayVector.Normalisation(vector);
+        double actual = RayVector.Magnitude(norm);
+        Assert.Equal(1, actual);
+    }
 }
 
