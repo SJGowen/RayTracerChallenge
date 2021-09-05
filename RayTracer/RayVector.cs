@@ -9,4 +9,7 @@ public class RayVector : RayTuple
 
     public static RayVector Normalisation(RayVector vector) => 
         new(vector.X / Magnitude(vector), vector.Y / Magnitude(vector), vector.Z / Magnitude(vector));
+
+    public static double DotProduct(RayVector vector1, RayVector vector2) =>
+        vector1.X * vector2.X + vector1.Y * vector2.Y + vector1.Z * vector2.Z + vector1.W * vector2.W;
 }
