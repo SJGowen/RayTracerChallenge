@@ -22,5 +22,15 @@ public class VectorsProducts
         RayVector expected = new(-1, 2, -1);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void CrossProductTwoVectorsBAEqualsVectorNegC()
+    {
+        RayVector vector1 = new(1, 2, 3);
+        RayVector vector2 = new(2, 3, 4);
+        RayVector actual = RayVector.CrossProduct(vector2, vector1);
+        RayVector expected = new(1, -2, 1);
+        Assert.Equal(expected, actual);
+    }
 }
 
