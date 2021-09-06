@@ -13,5 +13,15 @@ public class Colours
         Assert.Equal(0.4, colour.Green);
         Assert.Equal(1.7, colour.Blue);
     }
+
+    [Fact]
+    public void AddingColours()
+    {
+        Colour c1 = new(0.9, 0.6, 0.75);
+        Colour c2 = new(0.7, 0.1, 0.25);
+        Colour actual = c1 + c2;
+        Colour expected = new(1.6, 0.7, 1.0);
+        Assert.Equal(expected, actual);
+    }
 }
 
