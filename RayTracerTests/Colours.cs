@@ -23,5 +23,15 @@ public class Colours
         Colour expected = new(1.6, 0.7, 1.0);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void SubtractingColours()
+    {
+        Colour c1 = new(0.9, 0.6, 0.75);
+        Colour c2 = new(0.7, 0.1, 0.25);
+        Colour actual = c1 - c2;
+        Colour expected = new(0.2, 0.5, 0.5);
+        Assert.Equal(expected, actual);
+    }
 }
 
