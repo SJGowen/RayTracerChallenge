@@ -3,7 +3,6 @@ public class Canvas
 {
     public int Width { get; }
     public int Height { get; }
-
     public Colour[,] Pixels { get; set; }
 
     public Canvas(int width, int height)

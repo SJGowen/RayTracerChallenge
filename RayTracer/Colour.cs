@@ -1,12 +1,13 @@
 ﻿namespace RayTracer;
 public class Colour
 {
-    public Colour(int red, int green, int blue)
-    {
-        Red = red;
-        Green = green;
-        Blue = blue;
-    }
+    public double Red { get; }
+    public double Green { get; }
+    public double Blue { get; }
+
+    public Colour() : this(0.0, 0.0, 0.0) { }
+
+    public Colour(int red, int green, int blue) : this(red * 1.0, green * 1.0, blue * 1.0) { }
 
     public Colour(double red, double green, double blue)
     {
@@ -15,9 +16,10 @@ public class Colour
         Blue = blue;
     }
 
-    public double Red { get; }
-    public double Green { get; }
-    public double Blue { get; }
+    public override string ToString()
+    {
+        return $"({Red},{Green},{Blue})";
+    }
 
     public bool IsEqual(object? obj) => obj is Colour colour && Equality.Equal(Red, colour.Red) && Equality.Equal(Green, colour.Green) && Equality.Equal(Blue, colour.Blue);
 

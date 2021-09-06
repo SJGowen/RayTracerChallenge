@@ -6,15 +6,9 @@ public class RayTuple
     public double Z { get; }
     public double W { get; }
 
-    public RayTuple(double x, double y, double z, double w)
-    {
-        X = x;
-        Y = y;
-        Z = z;
-        W = w;
-    }
+    public RayTuple(int x, int y, int z, int w) : this(x * 1.0, y * 1.0, z * 1.0, w * 1.0) { }
 
-    public RayTuple(int x, int y, int z, int w)
+    public RayTuple(double x, double y, double z, double w)
     {
         X = x;
         Y = y;
