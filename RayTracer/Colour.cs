@@ -28,4 +28,7 @@ public class Colour
     public static Colour operator -(Colour colour) => new(-colour.Red, -colour.Green, -colour.Blue);
     public static Colour operator -(Colour colour1, Colour colour2) =>
         new(colour1.Red - colour2.Red, colour1.Green - colour2.Green, colour1.Blue - colour2.Blue);
+
+    public static Colour operator *(Colour colour1, double multiplyer) =>
+        new(colour1.Red * multiplyer, colour1.Green * multiplyer, colour1.Blue * multiplyer);
 }

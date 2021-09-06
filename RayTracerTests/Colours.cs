@@ -33,5 +33,14 @@ public class Colours
         Colour expected = new(0.2, 0.5, 0.5);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void MultiplyingColourByScalar()
+    {
+        Colour colour = new(0.2, 0.3, 0.4);
+        Colour actual = colour * 2;
+        Colour expected = new(0.4, 0.6, 0.8);
+        Assert.Equal(expected, actual);
+    }
 }
 
