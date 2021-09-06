@@ -3,7 +3,7 @@ using Xunit;
 
 namespace RayTracerTests;
 
-public class VectorNormalisation
+public class VectorNormalisationTests
 {
     [Fact]
     public void NormalisingVector400Gives100()

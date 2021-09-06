@@ -2,7 +2,7 @@ using RayTracer;
 using Xunit;
 
 namespace RayTracerTests;
-public class PointsAndVectors
+public class PointsAndVectorTests
 {
     [Fact]
     public void TupleWithWEqual1IsPoint()

@@ -2,7 +2,7 @@
 using Xunit;
 
 namespace RayTracerTests;
-public class PointsAndVectorsMaths
+public class PointsAndVectorsMathsTests
 {
     [Fact]
     public void AddingTwoTuples()

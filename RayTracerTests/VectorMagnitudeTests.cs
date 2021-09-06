@@ -2,7 +2,7 @@
 using Xunit;
 
 namespace RayTracerTests;
-public class VectorMagnitude
+public class VectorMagnitudeTests
 {
     [Fact]
     public void MagnitudeOfVector100()

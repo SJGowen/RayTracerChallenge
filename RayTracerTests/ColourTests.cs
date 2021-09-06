@@ -3,7 +3,7 @@ using Xunit;
 
 namespace RayTracerTests;
 
-public class Colours
+public class ColourTests
 {
     [Fact]
     public void ColoursAreRedGreenBlueTuples()
