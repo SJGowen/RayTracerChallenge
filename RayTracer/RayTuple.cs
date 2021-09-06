@@ -31,11 +31,7 @@ public class RayTuple
 
     public bool IsVector => W == 0.0;
 
-    private const double Epsilon = 0.00001;
-    public static bool Equal(double a, double b) => Math.Abs(a - b) <= Epsilon;
-    public static bool Equal(int a, int b) => Math.Abs(a - b) <= Epsilon;
-
-    public bool IsEqual(object? obj) => obj is RayTuple tuple && Equal(X, tuple.X) && Equal(Y, tuple.Y) && Equal(Z, tuple.Z) && Equal(W, tuple.W);
+    public bool IsEqual(object? obj) => obj is RayTuple tuple && Equality.Equal(X, tuple.X) && Equality.Equal(Y, tuple.Y) && Equality.Equal(Z, tuple.Z) && Equality.Equal(W, tuple.W);
 
     public override bool Equals(object? obj) => obj is RayTuple tuple && this.IsEqual(tuple);
 
