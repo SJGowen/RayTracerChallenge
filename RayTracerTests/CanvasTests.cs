@@ -24,4 +24,13 @@ public class CanvasTests
         Assert.Equal(20, canvas.Height);
         Assert.True(isBlack);
     }
+
+    [Fact]
+    public void WritingPixelToCanvas()
+    {
+        Canvas canvas = new(10, 20);
+        Colour red = new(1, 0, 0);
+        canvas.Pixels[2, 3] = red;
+        Assert.Equal(red, canvas.Pixels[2, 3]);
+    }
 }
