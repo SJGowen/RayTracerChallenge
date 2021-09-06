@@ -20,4 +20,31 @@ public class Canvas
             }
         }
     }
+
+    public void SaveAsPPM(string filename)
+    {
+        using (StreamWriter header = new(filename))
+        {
+            header.WriteLine("P3");
+            header.WriteLine($"{Width} {Height}");
+            header.WriteLine("255");
+        }
+    }
+
+    public static List<string> ReadFromPPM(string filename)
+    {
+        if (string.IsNullOrWhiteSpace(filename)) throw new ArgumentNullException(nameof(filename));
+
+        List<string> list = new();
+        using (StreamReader reader = new(filename))
+        {
+            while (reader.Peek() >= 0)
+            {
+                string? line = reader.ReadLine();
+                if (line != null) list.Add(line);
+            }
+        }
+
+        return list;
+    }
 }

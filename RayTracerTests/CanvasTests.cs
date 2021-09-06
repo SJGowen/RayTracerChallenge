@@ -33,4 +33,16 @@ public class CanvasTests
         canvas.Pixels[2, 3] = red;
         Assert.Equal(red, canvas.Pixels[2, 3]);
     }
+
+    [Fact]
+    public void ConstructingThePPMHeader()
+    {
+        String filename = "ConstructingThePPMHeader.ppm";
+        Canvas canvas = new(5, 3);
+        canvas.SaveAsPPM(filename);
+        var lines = Canvas.ReadFromPPM(filename);
+        Assert.Equal("P3", lines[0]);
+        Assert.Equal("5 3", lines[1]);
+        Assert.Equal("255", lines[2]);
+    }
 }
