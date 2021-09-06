@@ -3,7 +3,7 @@ using Xunit;
 
 namespace RayTracerTests;
 
-public class VectorsDotProductTests
+public class VectorDotProductTests
 {
     [Fact]
     public void DotProductTwoVectorsEqualsSumOfSquaresXYZW()
