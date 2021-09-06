@@ -1,6 +1,13 @@
 ﻿namespace RayTracer;
 public class Colour
 {
+    public Colour(int red, int green, int blue)
+    {
+        Red = red;
+        Green = green;
+        Blue = blue;
+    }
+
     public Colour(double red, double green, double blue)
     {
         Red = red;
