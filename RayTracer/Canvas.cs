@@ -21,42 +21,51 @@ public class Canvas
         }
     }
 
+    public void CanvasToPPM(string filename)
+    {
+        SaveAsPPMHeader(filename);
+        SaveAsPPMBody(filename);
+        SaveAsPPMFooter(filename);
+    }
+
     public void SaveAsPPMHeader(string filename)
     {
-        using (StreamWriter header = new(filename))
-        {
-            header.WriteLine("P3");
-            header.WriteLine($"{Width} {Height}");
-            header.WriteLine("255");
-        }
+        using StreamWriter header = new(filename);
+        header.WriteLine("P3");
+        header.WriteLine($"{Width} {Height}");
+        header.WriteLine("255");
     }
 
     public void SaveAsPPMBody(string filename)
     {
-        using (StreamWriter body = new(filename))
+        using StreamWriter body = new(filename);
+        string line = "";
+        for (int y = 0; y < Height; y++)
         {
-            string line = "";
-            for (int y = 0; y < Height; y++)
+            for (int x = 0; x < Width; x++)
             {
-                for (int x = 0; x < Width; x++)
+                if (line != "") line += " ";
+                line += Pixels[x, y].ToPPMString();
+
+                if (line.Length > 70)
                 {
-                    if (line != "") line += " ";
-                    line += Pixels[x, y].ToPPMString();
-
-                    if (line.Length > 70)
-                    {
-                        int pos = 70;
-                        while (!Char.IsWhiteSpace(line[pos])) pos--;
-                        string newLine = line.Substring(pos + 1);
-                        body.WriteLine(line.Substring(0, pos));
-                        line = newLine;
-                    }
+                    int pos = 70;
+                    while (!Char.IsWhiteSpace(line[pos])) pos--;
+                    string newLine = line.Substring(pos + 1);
+                    body.WriteLine(line.Substring(0, pos));
+                    line = newLine;
                 }
-
-                body.WriteLine(line);
-                line = "";
             }
+
+            body.WriteLine(line);
+            line = "";
         }
+    }
+
+    public void SaveAsPPMFooter(string filename)
+    {
+        using StreamWriter footer = new(filename);
+        footer.WriteLine();
     }
 
     public static List<string> ReadFromPPM(string filename)

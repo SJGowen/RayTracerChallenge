@@ -84,4 +84,14 @@ public class CanvasTests
         Assert.Equal("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", lines[2]);
         Assert.Equal("153 255 204 153 255 204 153 255 204 153 255 204 153", lines[3]);
     }
+
+    [Fact]
+    public void PPMFilesAreTerminatedByNewlineCharacter()
+    {
+        string filename = "PPMFooter.ppm";
+        Canvas canvas = new(5, 3);
+        canvas.SaveAsPPMFooter(filename);
+        var lines = Canvas.ReadFromPPM(filename);
+        Assert.Equal("", lines[0]);
+    }
 }
