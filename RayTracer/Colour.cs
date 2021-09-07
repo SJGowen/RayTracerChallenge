@@ -21,6 +21,19 @@ public class Colour
         return $"({Red},{Green},{Blue})";
     }
 
+    public string ToPPMString()
+    {
+        return $"{Normalise(Red)} {Normalise(Green)} {Normalise(Blue)}";
+    }
+
+    private static string Normalise(double colour)
+    {
+        int normalised = (int)(colour * 256);
+        if (normalised < 0) normalised = 0;
+        if (normalised > 255) normalised = 255;
+        return $"{normalised}";
+    }
+
     public bool IsEqual(object? obj) => obj is Colour colour && Equality.Equal(Red, colour.Red) && Equality.Equal(Green, colour.Green) && Equality.Equal(Blue, colour.Blue);
 
     public override bool Equals(object? obj) => obj is Colour colour && this.IsEqual(colour);

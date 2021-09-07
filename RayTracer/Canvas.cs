@@ -12,22 +12,40 @@ public class Canvas
 
         Pixels = new Colour[width, height];
 
-        for (int i = 0; i < width; i++)
+        for (int x = 0; x < width; x++)
         {
-            for (int j = 0; j < height; j++)
+            for (int y = 0; y < height; y++)
             {
-                Pixels[i, j] = new Colour(0, 0, 0);
+                Pixels[x, y] = new Colour(0, 0, 0);
             }
         }
     }
 
-    public void SaveAsPPM(string filename)
+    public void SaveAsPPMHeader(string filename)
     {
         using (StreamWriter header = new(filename))
         {
             header.WriteLine("P3");
             header.WriteLine($"{Width} {Height}");
             header.WriteLine("255");
+        }
+    }
+
+    public void SaveAsPPMBody(string filename)
+    {
+        using (StreamWriter body = new(filename))
+        {
+            string line = "";
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    if (line != "") line += " ";
+                    line += Pixels[x, y].ToPPMString();
+                }
+                body.WriteLine(line);
+                line = "";
+            }
         }
     }
 
