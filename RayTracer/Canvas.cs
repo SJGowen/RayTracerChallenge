@@ -1,9 +1,12 @@
-﻿namespace RayTracer;
+﻿using System.Diagnostics;
+using System.Drawing;
+
+namespace RayTracer;
 public class Canvas
 {
     public int Width { get; }
     public int Height { get; }
-    public Colour[,] Pixels { get; set; }
+    private Colour[,] Pixels { get; set; }
 
     public Canvas(int width, int height)
     {
@@ -66,6 +69,27 @@ public class Canvas
     {
         using StreamWriter footer = new(filename, append);
         footer.WriteLine();
+    }
+
+    public void SetPixel(int pixelX, int pixelY, Colour colour)
+    {
+        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
+        {
+            throw new ArgumentOutOfRangeException($"An attempt has been made to Set Pixel[{pixelX},{pixelY}] to " +
+                $"Colour({colour.Red},{colour.Green},{colour.Blue}) in a Grid({Width},{Height}).");
+        }
+        
+        Pixels[pixelX, pixelY] = colour;
+    }
+
+    public Colour GetPixel(int pixelX, int pixelY)
+    {
+        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
+        {
+            throw new ArgumentOutOfRangeException($"An attempt has been made to Get Pixel[{pixelX},{pixelY}] from a Grid({Width},{Height}).");
+        }
+
+        return Pixels[pixelX, pixelY];
     }
 
     public static List<string> ReadFromPPM(string filename)

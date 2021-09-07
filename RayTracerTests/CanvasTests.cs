@@ -15,7 +15,7 @@ public class CanvasTests
         {
             for (int y = 0; y < canvas.Height; y++)
             {
-                if (canvas.Pixels[x, y] != black)
+                if (canvas.GetPixel(x, y) != black)
                     isBlack = false;
             }
         }
@@ -30,8 +30,8 @@ public class CanvasTests
     {
         Canvas canvas = new(10, 20);
         Colour red = new(1, 0, 0);
-        canvas.Pixels[2, 3] = red;
-        Assert.Equal(red, canvas.Pixels[2, 3]);
+        canvas.SetPixel(2, 3, red);
+        Assert.Equal(red, canvas.GetPixel(2, 3));
     }
 
     [Fact]
@@ -54,9 +54,9 @@ public class CanvasTests
         Colour c1 = new(1.5, 0, 0);
         Colour c2 = new(0, 0.5, 0);
         Colour c3 = new(-0.5, 0, 1);
-        canvas.Pixels[0, 0] = c1;
-        canvas.Pixels[2, 1] = c2;
-        canvas.Pixels[4, 2] = c3;
+        canvas.SetPixel(0, 0, c1);
+        canvas.SetPixel(2, 1, c2);
+        canvas.SetPixel(4, 2, c3);
         canvas.SaveAsPPMBody(filename, false);
         var lines = Canvas.ReadFromPPM(filename);
         Assert.Equal("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0", lines[0]);
@@ -74,7 +74,7 @@ public class CanvasTests
         {
             for (int y = 0; y < canvas.Height; y++)
             {
-                canvas.Pixels[x, y] = colour;
+                canvas.SetPixel(x, y, colour);
             }
         }
         canvas.SaveAsPPMBody(filename, false);

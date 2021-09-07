@@ -20,9 +20,10 @@ public class Program
         Environment environment = new(gravity, wind);
         Canvas canvas = new(900, 550);
         Colour colour = new(1, 0, 0);
+
         while (projectile.Position.Y >= 0.0)
         {
-            canvas.Pixels[(int)projectile.Position.X, (int)(550 - projectile.Position.Y)] = colour;
+            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
             projectile = Tick(environment, projectile);
         }
 
