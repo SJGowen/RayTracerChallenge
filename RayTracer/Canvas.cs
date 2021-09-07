@@ -42,7 +42,17 @@ public class Canvas
                 {
                     if (line != "") line += " ";
                     line += Pixels[x, y].ToPPMString();
+
+                    if (line.Length > 70)
+                    {
+                        int pos = 70;
+                        while (!Char.IsWhiteSpace(line[pos])) pos--;
+                        string newLine = line.Substring(pos + 1);
+                        body.WriteLine(line.Substring(0, pos));
+                        line = newLine;
+                    }
                 }
+
                 body.WriteLine(line);
                 line = "";
             }

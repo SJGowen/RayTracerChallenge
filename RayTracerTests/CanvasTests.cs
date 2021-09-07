@@ -37,7 +37,7 @@ public class CanvasTests
     [Fact]
     public void ConstructingThePPMHeader()
     {
-        String filename = "PPMHeader.ppm";
+        string filename = "PPMHeader.ppm";
         Canvas canvas = new(5, 3);
         canvas.SaveAsPPMHeader(filename);
         var lines = Canvas.ReadFromPPM(filename);
@@ -62,5 +62,26 @@ public class CanvasTests
         Assert.Equal("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0", lines[0]);
         Assert.Equal("0 0 0 0 0 0 0 128 0 0 0 0 0 0 0", lines[1]);
         Assert.Equal("0 0 0 0 0 0 0 0 0 0 0 0 0 0 255", lines[2]);
+    }
+
+    [Fact]
+    public void SplittingLongLinesInPPMFiles()
+    {
+        string filename = "PPMBodySplit.ppm";
+        Canvas canvas = new(10, 2);
+        Colour colour = new(1, 0.8, 0.6);
+        for (int x = 0; x < canvas.Width; x++)
+        {
+            for (int y = 0; y < canvas.Height; y++)
+            {
+                canvas.Pixels[x, y] = colour;
+            }
+        }
+        canvas.SaveAsPPMBody(filename);
+        var lines = Canvas.ReadFromPPM(filename);
+        Assert.Equal("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", lines[0]);
+        Assert.Equal("153 255 204 153 255 204 153 255 204 153 255 204 153", lines[1]);
+        Assert.Equal("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", lines[2]);
+        Assert.Equal("153 255 204 153 255 204 153 255 204 153 255 204 153", lines[3]);
     }
 }
