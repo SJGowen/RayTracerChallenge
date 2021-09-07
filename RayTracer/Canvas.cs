@@ -19,7 +19,7 @@ public class Canvas
         {
             for (int y = 0; y < height; y++)
             {
-                Pixels[x, y] = new Colour(0, 0, 0);
+                Pixels[x, y] = new Colour();
             }
         }
     }
