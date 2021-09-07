@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing;
-
-namespace RayTracer;
+﻿namespace RayTracer;
 public class Canvas
 {
     public int Width { get; }
@@ -22,6 +19,27 @@ public class Canvas
                 Pixels[x, y] = new Colour();
             }
         }
+    }
+
+    public Colour GetPixel(int pixelX, int pixelY)
+    {
+        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
+        {
+            Console.WriteLine($"An attempt has been made to Get Pixel[{pixelX},{pixelY}] from a Grid({Width},{Height}).");
+        }
+
+        return Pixels[Math.Clamp(pixelX, 0, Width), Math.Clamp(pixelY, 0, Height)];
+    }
+
+    public void SetPixel(int pixelX, int pixelY, Colour colour)
+    {
+        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
+        {
+            Console.WriteLine($"An attempt has been made to Set Pixel[{pixelX},{pixelY}] to " +
+                $"Colour({colour.Red},{colour.Green},{colour.Blue}) in a Grid({Width},{Height}).");
+        }
+
+        Pixels[Math.Clamp(pixelX, 0, Width), Math.Clamp(pixelY, 0, Height)] = colour;
     }
 
     public void CanvasToPPM(string filename)
@@ -54,7 +72,7 @@ public class Canvas
                 {
                     int pos = 70;
                     while (!Char.IsWhiteSpace(line[pos])) pos--;
-                    string newLine = line.Substring(pos + 1);
+                    string newLine = line[(pos + 1)..];
                     body.WriteLine(line.Substring(0, pos));
                     line = newLine;
                 }
@@ -69,27 +87,6 @@ public class Canvas
     {
         using StreamWriter footer = new(filename, append);
         footer.WriteLine();
-    }
-
-    public void SetPixel(int pixelX, int pixelY, Colour colour)
-    {
-        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
-        {
-            throw new ArgumentOutOfRangeException($"An attempt has been made to Set Pixel[{pixelX},{pixelY}] to " +
-                $"Colour({colour.Red},{colour.Green},{colour.Blue}) in a Grid({Width},{Height}).");
-        }
-        
-        Pixels[pixelX, pixelY] = colour;
-    }
-
-    public Colour GetPixel(int pixelX, int pixelY)
-    {
-        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
-        {
-            throw new ArgumentOutOfRangeException($"An attempt has been made to Get Pixel[{pixelX},{pixelY}] from a Grid({Width},{Height}).");
-        }
-
-        return Pixels[pixelX, pixelY];
     }
 
     public static List<string> ReadFromPPM(string filename)

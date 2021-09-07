@@ -28,10 +28,7 @@ public class Colour
 
     private static string Normalise(double colour)
     {
-        int normalised = (int)(colour * 256);
-        if (normalised < 0) normalised = 0;
-        if (normalised > 255) normalised = 255;
-        return $"{normalised}";
+        return $"{(int)Math.Round(Math.Clamp(colour * 255, 0, 255))}";
     }
 
     public bool IsEqual(object? obj) => obj is Colour colour && Equality.Equal(Red, colour.Red) && Equality.Equal(Green, colour.Green) && Equality.Equal(Blue, colour.Blue);
