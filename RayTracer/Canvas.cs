@@ -28,17 +28,17 @@ public class Canvas
         SaveAsPPMFooter(filename);
     }
 
-    public void SaveAsPPMHeader(string filename)
+    public void SaveAsPPMHeader(string filename, bool append = false)
     {
-        using StreamWriter header = new(filename);
+        using StreamWriter header = new(filename, append);
         header.WriteLine("P3");
         header.WriteLine($"{Width} {Height}");
         header.WriteLine("255");
     }
 
-    public void SaveAsPPMBody(string filename)
+    public void SaveAsPPMBody(string filename, bool append = true)
     {
-        using StreamWriter body = new(filename);
+        using StreamWriter body = new(filename, append);
         string line = "";
         for (int y = 0; y < Height; y++)
         {
@@ -62,9 +62,9 @@ public class Canvas
         }
     }
 
-    public void SaveAsPPMFooter(string filename)
+    public void SaveAsPPMFooter(string filename, bool append = true)
     {
-        using StreamWriter footer = new(filename);
+        using StreamWriter footer = new(filename, append);
         footer.WriteLine();
     }
 

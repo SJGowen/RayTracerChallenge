@@ -39,7 +39,7 @@ public class CanvasTests
     {
         string filename = "PPMHeader.ppm";
         Canvas canvas = new(5, 3);
-        canvas.SaveAsPPMHeader(filename);
+        canvas.SaveAsPPMHeader(filename, false);
         var lines = Canvas.ReadFromPPM(filename);
         Assert.Equal("P3", lines[0]);
         Assert.Equal("5 3", lines[1]);
@@ -57,7 +57,7 @@ public class CanvasTests
         canvas.Pixels[0, 0] = c1;
         canvas.Pixels[2, 1] = c2;
         canvas.Pixels[4, 2] = c3;
-        canvas.SaveAsPPMBody(filename);
+        canvas.SaveAsPPMBody(filename, false);
         var lines = Canvas.ReadFromPPM(filename);
         Assert.Equal("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0", lines[0]);
         Assert.Equal("0 0 0 0 0 0 0 128 0 0 0 0 0 0 0", lines[1]);
@@ -77,7 +77,7 @@ public class CanvasTests
                 canvas.Pixels[x, y] = colour;
             }
         }
-        canvas.SaveAsPPMBody(filename);
+        canvas.SaveAsPPMBody(filename, false);
         var lines = Canvas.ReadFromPPM(filename);
         Assert.Equal("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", lines[0]);
         Assert.Equal("153 255 204 153 255 204 153 255 204 153 255 204 153", lines[1]);
@@ -90,7 +90,7 @@ public class CanvasTests
     {
         string filename = "PPMFooter.ppm";
         Canvas canvas = new(5, 3);
-        canvas.SaveAsPPMFooter(filename);
+        canvas.SaveAsPPMFooter(filename, false);
         var lines = Canvas.ReadFromPPM(filename);
         Assert.Equal("", lines[0]);
     }
