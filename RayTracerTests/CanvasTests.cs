@@ -39,8 +39,8 @@ public class CanvasTests
     {
         string filename = "PPMHeader.ppm";
         Canvas canvas = new(5, 3);
-        canvas.SaveAsPPMHeader(filename, false);
-        var lines = Canvas.ReadFromPPM(filename);
+        PPMFile.SaveAsPPMHeader(canvas, filename, false);
+        var lines = PPMFile.ReadFromPPM(filename);
         Assert.Equal("P3", lines[0]);
         Assert.Equal("5 3", lines[1]);
         Assert.Equal("255", lines[2]);
@@ -57,8 +57,8 @@ public class CanvasTests
         canvas.SetPixel(0, 0, c1);
         canvas.SetPixel(2, 1, c2);
         canvas.SetPixel(4, 2, c3);
-        canvas.SaveAsPPMBody(filename, false);
-        var lines = Canvas.ReadFromPPM(filename);
+        PPMFile.SaveAsPPMBody(canvas, filename, false);
+        var lines = PPMFile.ReadFromPPM(filename);
         Assert.Equal("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0", lines[0]);
         Assert.Equal("0 0 0 0 0 0 0 128 0 0 0 0 0 0 0", lines[1]);
         Assert.Equal("0 0 0 0 0 0 0 0 0 0 0 0 0 0 255", lines[2]);
@@ -77,8 +77,8 @@ public class CanvasTests
                 canvas.SetPixel(x, y, colour);
             }
         }
-        canvas.SaveAsPPMBody(filename, false);
-        var lines = Canvas.ReadFromPPM(filename);
+        PPMFile.SaveAsPPMBody(canvas, filename, false);
+        var lines = PPMFile.ReadFromPPM(filename);
         Assert.Equal("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", lines[0]);
         Assert.Equal("153 255 204 153 255 204 153 255 204 153 255 204 153", lines[1]);
         Assert.Equal("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", lines[2]);
@@ -90,8 +90,8 @@ public class CanvasTests
     {
         string filename = "PPMFooter.ppm";
         Canvas canvas = new(5, 3);
-        canvas.SaveAsPPMFooter(filename, false);
-        var lines = Canvas.ReadFromPPM(filename);
+        PPMFile.SaveAsPPMFooter(filename, false);
+        var lines = PPMFile.ReadFromPPM(filename);
         Assert.Equal("", lines[0]);
     }
 }

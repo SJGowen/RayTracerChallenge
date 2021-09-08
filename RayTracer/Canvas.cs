@@ -3,7 +3,7 @@ public class Canvas
 {
     public int Width { get; }
     public int Height { get; }
-    private Colour[,] Pixels { get; set; }
+    public Colour[,] Pixels { get; }
 
     public Canvas(int width, int height)
     {
@@ -23,86 +23,21 @@ public class Canvas
 
     public Colour GetPixel(int pixelX, int pixelY)
     {
-        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
+        if (pixelX < 0 || pixelX >= Width || pixelY < 0 || pixelY >= Height)
         {
-            Console.WriteLine($"An attempt has been made to Get Pixel[{pixelX},{pixelY}] from a Grid({Width},{Height}).");
+            Console.WriteLine($"Tried to Get Pixel[{pixelX},{pixelY}] from a Grid({Width},{Height}).");
         }
 
-        return Pixels[Math.Clamp(pixelX, 0, Width), Math.Clamp(pixelY, 0, Height)];
+        return Pixels[Math.Clamp(pixelX, 0, Width - 1), Math.Clamp(pixelY, 0, Height - 1)];
     }
 
     public void SetPixel(int pixelX, int pixelY, Colour colour)
     {
-        if (pixelX < 0 || pixelX > Width || pixelY < 0 || pixelY > Height)
+        if (pixelX < 0 || pixelX >= Width || pixelY < 0 || pixelY >= Height)
         {
-            Console.WriteLine($"An attempt has been made to Set Pixel[{pixelX},{pixelY}] to " +
-                $"Colour({colour.Red},{colour.Green},{colour.Blue}) in a Grid({Width},{Height}).");
+            Console.WriteLine($"Tried to Set Pixel[{pixelX},{pixelY}] to Colour({colour.Red},{colour.Green},{colour.Blue}) in a Grid({Width},{Height}).");
         }
 
-        Pixels[Math.Clamp(pixelX, 0, Width), Math.Clamp(pixelY, 0, Height)] = colour;
-    }
-
-    public void CanvasToPPM(string filename)
-    {
-        SaveAsPPMHeader(filename);
-        SaveAsPPMBody(filename);
-        SaveAsPPMFooter(filename);
-    }
-
-    public void SaveAsPPMHeader(string filename, bool append = false)
-    {
-        using StreamWriter header = new(filename, append);
-        header.WriteLine("P3");
-        header.WriteLine($"{Width} {Height}");
-        header.WriteLine("255");
-    }
-
-    public void SaveAsPPMBody(string filename, bool append = true)
-    {
-        using StreamWriter body = new(filename, append);
-        string line = "";
-        for (int y = 0; y < Height; y++)
-        {
-            for (int x = 0; x < Width; x++)
-            {
-                if (line != "") line += " ";
-                line += Pixels[x, y].ToPPMString();
-
-                if (line.Length > 70)
-                {
-                    int pos = 70;
-                    while (!Char.IsWhiteSpace(line[pos])) pos--;
-                    string newLine = line[(pos + 1)..];
-                    body.WriteLine(line.Substring(0, pos));
-                    line = newLine;
-                }
-            }
-
-            body.WriteLine(line);
-            line = "";
-        }
-    }
-
-    public void SaveAsPPMFooter(string filename, bool append = true)
-    {
-        using StreamWriter footer = new(filename, append);
-        footer.WriteLine();
-    }
-
-    public static List<string> ReadFromPPM(string filename)
-    {
-        if (string.IsNullOrWhiteSpace(filename)) throw new ArgumentNullException(nameof(filename));
-
-        List<string> list = new();
-        using (StreamReader reader = new(filename))
-        {
-            while (reader.Peek() >= 0)
-            {
-                string? line = reader.ReadLine();
-                if (line != null) list.Add(line);
-            }
-        }
-
-        return list;
+        Pixels[Math.Clamp(pixelX, 0, Width - 1), Math.Clamp(pixelY, 0, Height - 1)] = colour;
     }
 }

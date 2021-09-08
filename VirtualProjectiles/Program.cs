@@ -13,21 +13,66 @@ public class Program
     private static void ProjectileTestChapter2()
     {
         RayPoint start = new(0, 1, 0);
-        var velocity = RayVector.Normalisation(new RayVector(1, 1.8, 0)) * 11.25;
-        Projectile projectile = new(start, velocity);
+        Canvas canvas = new(1150, 550);
         RayVector gravity = new(0, -0.1, 0);
         RayVector wind = new(-0.01, 0, 0);
         Environment environment = new(gravity, wind);
-        Canvas canvas = new(900, 550);
-        Colour colour = new(1, 0, 0);
 
+        var velocity = RayVector.Normalisation(new RayVector(1, 1.8, 0)) * 11.25;
+        Projectile projectile = new(start, velocity);
+        Colour colour = new(1, 0, 0);
         while (projectile.Position.Y >= 0.0)
         {
             canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
             projectile = Tick(environment, projectile);
         }
 
-        canvas.CanvasToPPM("Projectile1.ppm");
+        velocity = RayVector.Normalisation(new RayVector(1, 1.6, 0)) * 11.25;
+        projectile = new(start, velocity);
+        colour = new(0, 1, 0);
+        while (projectile.Position.Y >= 0.0)
+        {
+            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
+            projectile = Tick(environment, projectile);
+        }
+
+        velocity = RayVector.Normalisation(new RayVector(1, 1.4, 0)) * 11.25;
+        projectile = new(start, velocity);
+        colour = new(0, 0, 1);
+        while (projectile.Position.Y >= 0.0)
+        {
+            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
+            projectile = Tick(environment, projectile);
+        }
+
+        velocity = RayVector.Normalisation(new RayVector(1, 1.2, 0)) * 11.25;
+        projectile = new(start, velocity);
+        colour = new(1, 1, 0);
+        while (projectile.Position.Y >= 0.0)
+        {
+            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
+            projectile = Tick(environment, projectile);
+        }
+
+        velocity = RayVector.Normalisation(new RayVector(1, 1, 0)) * 11.25;
+        projectile = new(start, velocity);
+        colour = new(0, 1, 1);
+        while (projectile.Position.Y >= 0.0)
+        {
+            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
+            projectile = Tick(environment, projectile);
+        }
+
+        velocity = RayVector.Normalisation(new RayVector(1, 0.8, 0)) * 11.25;
+        projectile = new(start, velocity);
+        colour = new(1, 1, 1);
+        while (projectile.Position.Y >= 0.0)
+        {
+            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
+            projectile = Tick(environment, projectile);
+        }
+
+        PPMFile.CanvasToPPM(canvas, "Projectile.ppm");
     }
 
     private static void ProjectileTestChapter1()
