@@ -29,4 +29,14 @@ public class MatrixTests
         Assert.Equal(1, matrix.Cells[1, 0]);
         Assert.Equal(-2, matrix.Cells[1, 1]);
     }
+
+    [Fact]
+    public void A3x3MatrixIsRepresentable()
+    {
+        Matrix matrix = new(3, 3);
+        matrix.Add(-3, 5, 0, 1, -2, -7, 0, 1, 1);
+        Assert.Equal(-3, matrix.Cells[0, 0]);
+        Assert.Equal(-2, matrix.Cells[1, 1]);
+        Assert.Equal(1, matrix.Cells[2, 2]);
+    }
 }
