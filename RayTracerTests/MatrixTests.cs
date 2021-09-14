@@ -49,4 +49,14 @@ public class MatrixTests
         matrixB.Add(1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2);
         Assert.Equal(matrixA, matrixB);
     }
+
+    [Fact]
+    public void MatrixEqualityWithDifferentMatrices()
+    {
+        Matrix matrixA = new(4, 4);
+        matrixA.Add(1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2);
+        Matrix matrixB = new(4, 4);
+        matrixB.Add(2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1);
+        Assert.NotEqual(matrixA, matrixB);
+    }
 }
