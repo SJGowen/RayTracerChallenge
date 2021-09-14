@@ -23,7 +23,7 @@ public class RayTuple
 
     public bool IsVector => W == 0.0;
 
-    public bool IsEqual(object? obj) => obj is RayTuple tuple && Equality.Equal(X, tuple.X) && Equality.Equal(Y, tuple.Y) && Equality.Equal(Z, tuple.Z) && Equality.Equal(W, tuple.W);
+    private bool IsEqual(RayTuple tuple) => Equality.Equal(X, tuple.X) && Equality.Equal(Y, tuple.Y) && Equality.Equal(Z, tuple.Z) && Equality.Equal(W, tuple.W);
 
     public override bool Equals(object? obj) => obj is RayTuple tuple && this.IsEqual(tuple);
 

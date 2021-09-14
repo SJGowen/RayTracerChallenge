@@ -33,7 +33,7 @@ public class PointAndVectorTests
     {
         RayPoint point = new(4, -4, 3);
         RayTuple tuple = new(4, -4, 3, 1);
-        Assert.True(point.IsEqual(tuple));
+        Assert.Equal(tuple, point);
     }
 
     [Fact]
@@ -41,6 +41,6 @@ public class PointAndVectorTests
     {
         RayVector vector = new(4, -4, 3);
         RayTuple tuple = new(4, -4, 3, 0);
-        Assert.True(vector.IsEqual(tuple));
+        Assert.Equal(tuple, vector);
     }
 }

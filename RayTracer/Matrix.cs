@@ -15,7 +15,7 @@ public class Matrix
                 Cells[x, y] = values[x * Cells.GetLength(0) + y];
     }
 
-    public bool IsEqual(Matrix matrix)
+    private bool IsEqual(Matrix matrix)
     {
         bool result = true;
         for (int x = 0; x < Cells.GetLength(0); x++)
