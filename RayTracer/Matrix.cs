@@ -33,5 +33,27 @@ public class Matrix
 
     public static bool operator !=(Matrix matrix1, Matrix matrix2) => !matrix1.IsEqual(matrix2);
 
-}
+    public static Matrix operator *(Matrix multiplicand, Matrix multiplier)
+    {
+        if (4 != multiplicand.Cells.GetLength(0) || 4 != multiplier.Cells.GetLength(0) ||
+            4 != multiplicand.Cells.GetLength(1) || 4 != multiplier.Cells.GetLength(1))
+        {
+            throw new ArgumentException("You can only multiply 4x4 Matrixes");
+        }
 
+        Matrix result = new(4, 4);
+
+        for (int x = 0; x < 4; x++)
+        {
+            for (int y = 0; y < 4; y++)
+            {
+                result.Cells[x, y] = multiplicand.Cells[x, 0] * multiplier.Cells[0, y] +
+                    multiplicand.Cells[x, 1] * multiplier.Cells[1, y] +
+                    multiplicand.Cells[x, 2] * multiplier.Cells[2, y] +
+                    multiplicand.Cells[x, 3] * multiplier.Cells[3, y];
+            }
+        }
+
+        return result;
+    }
+}
