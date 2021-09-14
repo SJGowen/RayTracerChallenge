@@ -18,61 +18,29 @@ public class Program
         RayVector wind = new(-0.01, 0, 0);
         Environment environment = new(gravity, wind);
 
-        var velocity = RayVector.Normalisation(new RayVector(1, 1.8, 0)) * 11.25;
-        Projectile projectile = new(start, velocity);
-        Colour colour = new(1, 0, 0);
-        while (projectile.Position.Y >= 0.0)
+        double y = 1.8;
+        for (int i = 1; i < 8; i++)
         {
-            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
-            projectile = Tick(environment, projectile);
+            DrawProjectileTrack(canvas, environment, start, y, i);
+            y -= 0.2;
         }
 
-        velocity = RayVector.Normalisation(new RayVector(1, 1.6, 0)) * 11.25;
-        projectile = new(start, velocity);
-        colour = new(0, 1, 0);
-        while (projectile.Position.Y >= 0.0)
-        {
-            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
-            projectile = Tick(environment, projectile);
-        }
-
-        velocity = RayVector.Normalisation(new RayVector(1, 1.4, 0)) * 11.25;
-        projectile = new(start, velocity);
-        colour = new(0, 0, 1);
-        while (projectile.Position.Y >= 0.0)
-        {
-            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
-            projectile = Tick(environment, projectile);
-        }
-
-        velocity = RayVector.Normalisation(new RayVector(1, 1.2, 0)) * 11.25;
-        projectile = new(start, velocity);
-        colour = new(1, 1, 0);
-        while (projectile.Position.Y >= 0.0)
-        {
-            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
-            projectile = Tick(environment, projectile);
-        }
-
-        velocity = RayVector.Normalisation(new RayVector(1, 1, 0)) * 11.25;
-        projectile = new(start, velocity);
-        colour = new(0, 1, 1);
-        while (projectile.Position.Y >= 0.0)
-        {
-            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
-            projectile = Tick(environment, projectile);
-        }
-
-        velocity = RayVector.Normalisation(new RayVector(1, 0.8, 0)) * 11.25;
-        projectile = new(start, velocity);
-        colour = new(1, 1, 1);
-        while (projectile.Position.Y >= 0.0)
-        {
-            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
-            projectile = Tick(environment, projectile);
-        }
 
         PPMFile.CanvasToPPM(canvas, "Projectile.ppm");
+    }
+
+    private static void DrawProjectileTrack(Canvas canvas, Environment environment, RayPoint start, double y, int i)
+    {
+        var velocity = RayVector.Normalisation(new RayVector(1, y, 0)) * 11.25;
+        Projectile projectile = new(start, velocity);
+        string binary = Convert.ToString(i, 2);
+        while (binary.Length < 3) binary = "0" + binary;
+        Colour colour = new(binary[0] - '0', binary[1] - '0', binary[2] - '0');
+        while (projectile.Position.Y >= 0.0)
+        {
+            canvas.SetPixel((int)projectile.Position.X, (int)(550 - projectile.Position.Y), colour);
+            projectile = Tick(environment, projectile);
+        }
     }
 
     private static void ProjectileTestChapter1()
