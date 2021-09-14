@@ -72,4 +72,25 @@ public class Matrix
 
         return result;
     }
+
+    public static RayTuple operator *(Matrix matrix, RayTuple tuple)
+    {
+        if (4 != matrix.Cells.GetLength(0) || 4 != matrix.Cells.GetLength(1))
+        {
+            throw new ArgumentException("You can only multiply a 4x4 Matrix by a Tuple");
+        }
+
+        Matrix result = new(4, 1);
+
+        for (int x = 0; x < 4; x++)
+        {
+            result.Cells[x, 0] =
+                matrix.Cells[x, 0] * tuple.X +
+                matrix.Cells[x, 1] * tuple.Y +
+                matrix.Cells[x, 2] * tuple.Z +
+                matrix.Cells[x, 3] * tuple.W;
+        }
+
+        return new(result.Cells[0, 0], result.Cells[1, 0], result.Cells[2, 0], result.Cells[3, 0]);
+    }
 }

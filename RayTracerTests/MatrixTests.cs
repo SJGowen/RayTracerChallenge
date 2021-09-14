@@ -75,4 +75,14 @@ public class MatrixTests
         Matrix actual = matrixA * matrixB;
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void MatrixMultipliedByTuple()
+    {
+        Matrix matrix = new(1, 2, 3, 4, 2, 4, 4, 2, 8, 6, 4, 1, 0, 0, 0, 1);
+        RayTuple tuple = new(1, 2, 3, 1);
+        RayTuple expected = new(18, 24, 33, 1);
+        RayTuple actual = matrix * tuple;
+        Assert.Equal(expected, actual);
+    }
 }
