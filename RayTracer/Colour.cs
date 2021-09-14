@@ -7,8 +7,6 @@ public class Colour
 
     public Colour() : this(0.0, 0.0, 0.0) { }
 
-    public Colour(int red, int green, int blue) : this(red * 1.0, green * 1.0, blue * 1.0) { }
-
     public Colour(double red, double green, double blue)
     {
         Red = red;
