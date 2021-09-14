@@ -18,5 +18,15 @@ public class MatrixTests
         Assert.Equal(13.5, matrix.Cells[3, 0]);
         Assert.Equal(15.5, matrix.Cells[3, 2]);
     }
-}
 
+    [Fact]
+    public void A2x2MatrixIsRepresentable()
+    {
+        Matrix matrix = new(2, 2);
+        matrix.Add(-3, 5, 1, -2);
+        Assert.Equal(-3, matrix.Cells[0, 0]);
+        Assert.Equal(5, matrix.Cells[0, 1]);
+        Assert.Equal(1, matrix.Cells[1, 0]);
+        Assert.Equal(-2, matrix.Cells[1, 1]);
+    }
+}
