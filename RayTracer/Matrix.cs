@@ -8,11 +8,26 @@ public class Matrix
         Cells = new double[x, y];
     }
 
+    public Matrix(params double[] values)
+    {
+        if (Cells is null)
+        {
+            if (values.Length != (int)Math.Sqrt(values.Length) * (int)Math.Sqrt(values.Length))
+            {
+                throw new ArgumentException("The number of arguments passed, has to be a perfect square (if not create the Matrix passing x and y, and then add the values to it).");
+            }
+
+            Cells = new double[(int)Math.Sqrt(values.Length), (int)Math.Sqrt(values.Length)];
+        }
+
+        Add(values);
+    }
+
     public void Add(params double[] values)
     {
         for (int x = 0; x < Cells.GetLength(0); x++)
             for (int y = 0; y < Cells.GetLength(1); y++)
-                Cells[x, y] = values[x * Cells.GetLength(0) + y];
+                Cells[x, y] = values[x * Cells.GetLength(1) + y];
     }
 
     private bool IsEqual(Matrix matrix)
@@ -38,7 +53,7 @@ public class Matrix
         if (4 != multiplicand.Cells.GetLength(0) || 4 != multiplier.Cells.GetLength(0) ||
             4 != multiplicand.Cells.GetLength(1) || 4 != multiplier.Cells.GetLength(1))
         {
-            throw new ArgumentException("You can only multiply 4x4 Matrixes");
+            throw new ArgumentException("You can only multiply 4x4 Matrices");
         }
 
         Matrix result = new(4, 4);
@@ -47,7 +62,8 @@ public class Matrix
         {
             for (int y = 0; y < 4; y++)
             {
-                result.Cells[x, y] = multiplicand.Cells[x, 0] * multiplier.Cells[0, y] +
+                result.Cells[x, y] = 
+                    multiplicand.Cells[x, 0] * multiplier.Cells[0, y] +
                     multiplicand.Cells[x, 1] * multiplier.Cells[1, y] +
                     multiplicand.Cells[x, 2] * multiplier.Cells[2, y] +
                     multiplicand.Cells[x, 3] * multiplier.Cells[3, y];
