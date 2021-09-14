@@ -39,4 +39,14 @@ public class MatrixTests
         Assert.Equal(-2, matrix.Cells[1, 1]);
         Assert.Equal(1, matrix.Cells[2, 2]);
     }
+
+    [Fact]
+    public void MatrixEqualityWithIdenticalMatrices()
+    {
+        Matrix matrixA = new(4, 4);
+        matrixA.Add(1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2);
+        Matrix matrixB = new(4, 4);
+        matrixB.Add(1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2);
+        Assert.Equal(matrixA, matrixB);
+    }
 }
