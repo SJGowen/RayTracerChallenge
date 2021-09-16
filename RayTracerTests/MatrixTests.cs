@@ -105,4 +105,13 @@ public class MatrixTests
         RayTuple actual = tuple * identityMatrix;
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void TransposingMatrices()
+    {
+        Matrix matrix = new(0, 9, 3, 0, 9, 8, 0, 8, 1, 8, 5, 3, 0, 0, 5, 8);
+        Matrix expected = new(0, 9, 1, 0, 9, 8, 8, 0, 3, 0, 5, 5, 0, 8, 3, 8);
+        Matrix actual = Matrix.Transpose(matrix);
+        Assert.Equal(expected, actual);
+    }
 }

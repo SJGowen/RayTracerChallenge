@@ -100,4 +100,20 @@ public class Matrix
     {
         return matrix * tuple;
     }
+
+    public static Matrix Transpose(Matrix matrix)
+    {
+        double[] temp = new double[matrix.Cells.GetLength(0) * matrix.Cells.GetLength(1)];
+        for (int x = 0; x < matrix.Cells.GetLength(0); x++)
+        {
+            for (int y = 0; y < matrix.Cells.GetLength(1); y++)
+            {
+                temp.SetValue(matrix.Cells[x, y], x + y * matrix.Cells.GetLength(0));
+            }
+        }
+
+        Matrix result = new(matrix.Cells.GetLength(1), matrix.Cells.GetLength(0));
+        result.Add(temp);
+        return result;
+    }
 }
