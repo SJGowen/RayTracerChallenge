@@ -1,4 +1,6 @@
-﻿namespace RayTracer;
+﻿using System;
+
+namespace RayTracer;
 public static class Equality
 {
     private const double Epsilon = 0.00001;

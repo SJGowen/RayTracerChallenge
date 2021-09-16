@@ -1,4 +1,5 @@
 ﻿using RayTracer;
+using System;
 using Xunit;
 
 namespace RayTracerTests;

@@ -1,4 +1,6 @@
-﻿namespace RayTracer;
+﻿using System;
+
+namespace RayTracer;
 public class Canvas
 {
     public int Width { get; }

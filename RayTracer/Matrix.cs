@@ -1,4 +1,6 @@
-﻿namespace RayTracer;
+﻿using System;
+
+namespace RayTracer;
 public class Matrix
 {
     public double[,] Cells { get; }

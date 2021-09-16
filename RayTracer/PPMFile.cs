@@ -1,4 +1,8 @@
-﻿namespace RayTracer;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace RayTracer;
 public static class PPMFile
 {
     public static void CanvasToPPM(Canvas canvas, string filename)

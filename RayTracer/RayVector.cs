@@ -1,4 +1,6 @@
-﻿namespace RayTracer;
+﻿using System;
+
+namespace RayTracer;
 public class RayVector : RayTuple
 {
     public RayVector(double x, double y, double z) : base(x, y, z, 0) { }
