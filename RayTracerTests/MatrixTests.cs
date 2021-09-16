@@ -114,4 +114,12 @@ public class MatrixTests
         Matrix actual = Matrix.Transpose(matrix);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void TransposingIdentityMatrix()
+    {
+        Matrix identityMatrix = new(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        Matrix actual = Matrix.Transpose(identityMatrix);
+        Assert.Equal(identityMatrix, actual);
+    }
 }
