@@ -95,4 +95,14 @@ public class MatrixTests
         Matrix actual = matrix * identityMatrix;
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void MultiplyingTupleByIdentityMatrix()
+    {
+        RayTuple tuple = new(1, 2, 3, 4);
+        Matrix identityMatrix = new(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        RayTuple expected = new(1, 2, 3, 4);
+        RayTuple actual = tuple * identityMatrix;
+        Assert.Equal(expected, actual);
+    }
 }

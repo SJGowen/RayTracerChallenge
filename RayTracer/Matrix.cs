@@ -95,4 +95,9 @@ public class Matrix
 
         return new(result.Cells[0, 0], result.Cells[1, 0], result.Cells[2, 0], result.Cells[3, 0]);
     }
+
+    public static RayTuple operator *(RayTuple tuple, Matrix matrix)
+    {
+        return matrix * tuple;
+    }
 }
