@@ -40,4 +40,12 @@ public class InvertingMatricesTests
         var caughtException = Assert.Throws<ArgumentException>(() => Matrix.SubMatrix(matrix, 3, 0));
         Assert.Equal("Value of argument row is greater than the number of rows in the Matrix", caughtException.Message);
     }
+
+    [Fact]
+    public void SubmatrixWhenCalledWithHighColumnValueThrowsException()
+    {
+        Matrix matrix = new(1, 5, 0, -3, 2, 7, 0, 6, -3);
+        var caughtException = Assert.Throws<ArgumentException>(() => Matrix.SubMatrix(matrix, 0, 3));
+        Assert.Equal("Value of argument col is greater than the number of columns in the Matrix", caughtException.Message);
+    }
 }
