@@ -1,4 +1,5 @@
-﻿using RayTracer;
+﻿using Newtonsoft.Json.Linq;
+using RayTracer;
 using System;
 using Xunit;
 
@@ -30,5 +31,13 @@ public class InvertingMatricesTests
         var actual = Matrix.SubMatrix(matrix, 2, 1);
         Matrix expected = new(-6, 1, 6, -8, 8, 6, -7, -1, 1);
         Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void SubmatrixWhenCalledWithHighRowValueThrowsException()
+    {
+        Matrix matrix = new(1, 5, 0, -3, 2, 7, 0, 6, -3);
+        var caughtException = Assert.Throws<ArgumentException>(() => Matrix.SubMatrix(matrix, 3, 0));
+        Assert.Equal("Value of argument row is greater than the number of rows in the Matrix", caughtException.Message);
     }
 }
