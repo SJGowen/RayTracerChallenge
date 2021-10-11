@@ -124,4 +124,35 @@ public class Matrix
     {
         return matrix.Cells[0, 0] * matrix.Cells[1, 1] - matrix.Cells[0, 1] * matrix.Cells[1, 0];
     }
+
+    public static Matrix SubMatrix(Matrix matrix, int row, int col)
+    {
+        if (row >= matrix.Cells.GetLength(0))
+        {
+            throw new ArgumentException("Value of argument row is greater than the number of rows in the Matrix");
+        }
+
+        if (col >= matrix.Cells.GetLength(1))
+        {
+            throw new ArgumentException("Value of argument col is greater than the number of columns in the Matrix");
+        }
+
+        var cellCount = 0;
+        double[] cellValues = new double[(matrix.Cells.GetLength(0) - 1) * (matrix.Cells.GetLength(1) - 1)];
+        for (int x = 0; x < matrix.Cells.GetLength(0); x++)
+        {
+            for (int y = 0; y < matrix.Cells.GetLength(1); y++)
+            {
+                if (x == row || y == col)
+                {
+                    continue;
+                }
+
+                cellValues.SetValue(matrix.Cells[x, y], cellCount);
+                cellCount++;
+            }
+        }
+
+        return new Matrix(cellValues);
+    }
 }
