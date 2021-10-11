@@ -103,6 +103,11 @@ public class Matrix
 
     public static Matrix Transpose(Matrix matrix)
     {
+        if (matrix.Cells.GetLength(0) != matrix.Cells.GetLength(1))
+        {
+            throw new ArgumentException("You can only call transpose on a square matrix");
+        }
+
         double[] temp = new double[matrix.Cells.GetLength(0) * matrix.Cells.GetLength(1)];
         for (int x = 0; x < matrix.Cells.GetLength(0); x++)
         {

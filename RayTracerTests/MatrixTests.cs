@@ -1,4 +1,5 @@
 ﻿using RayTracer;
+using System;
 using Xunit;
 
 namespace RayTracerTests;
@@ -124,13 +125,11 @@ public class MatrixTests
     }
 
     [Fact]
-    public void Transposing3x2Matrix()
+    public void Transposing3x2MatrixThrowsException()
     {
         Matrix matrix = new(3, 2);
         matrix.Add(-3, 5, 1, -2, 4, 6);
-        Matrix expected = new(2, 3);
-        expected.Add(-3, 1, 4, 5, -2, 6);
-        Matrix atual = Matrix.Transpose(matrix);
-        Assert.Equal(expected, atual);
+        var caughtException = Assert.Throws<ArgumentException>(() => Matrix.Transpose(matrix));
+        Assert.Equal("You can only call transpose on a square matrix", caughtException.Message);
     }
 }
