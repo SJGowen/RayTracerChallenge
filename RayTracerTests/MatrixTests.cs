@@ -130,6 +130,6 @@ public class MatrixTests
         Matrix matrix = new(3, 2);
         matrix.Add(-3, 5, 1, -2, 4, 6);
         var caughtException = Assert.Throws<ArgumentException>(() => Matrix.Transpose(matrix));
-        Assert.Equal("You can only call transpose on a square matrix", caughtException.Message);
+        Assert.Equal("You can only call Transpose on a Square Matrix", caughtException.Message);
     }
 }

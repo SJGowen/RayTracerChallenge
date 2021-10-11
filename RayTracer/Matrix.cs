@@ -105,20 +105,18 @@ public class Matrix
     {
         if (matrix.Cells.GetLength(0) != matrix.Cells.GetLength(1))
         {
-            throw new ArgumentException("You can only call transpose on a square matrix");
+            throw new ArgumentException("You can only call Transpose on a Square Matrix");
         }
 
-        double[] temp = new double[matrix.Cells.GetLength(0) * matrix.Cells.GetLength(1)];
+        double[] cellValues = new double[matrix.Cells.GetLength(0) * matrix.Cells.GetLength(1)];
         for (int x = 0; x < matrix.Cells.GetLength(0); x++)
         {
             for (int y = 0; y < matrix.Cells.GetLength(1); y++)
             {
-                temp.SetValue(matrix.Cells[x, y], x + y * matrix.Cells.GetLength(0));
+                cellValues.SetValue(matrix.Cells[x, y], x + y * matrix.Cells.GetLength(0));
             }
         }
 
-        Matrix result = new(matrix.Cells.GetLength(1), matrix.Cells.GetLength(0));
-        result.Add(temp);
-        return result;
+        return new Matrix(cellValues);
     }
 }
