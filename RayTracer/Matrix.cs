@@ -119,4 +119,9 @@ public class Matrix
 
         return new Matrix(cellValues);
     }
+
+    public static double Determinant(Matrix matrix)
+    {
+        return matrix.Cells[0, 0] * matrix.Cells[1, 1] - matrix.Cells[0, 1] * matrix.Cells[1, 0];
+    }
 }
