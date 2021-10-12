@@ -170,4 +170,10 @@ public class Matrix
         var subMatrix = SubMatrix(matrix, row, col);
         return Determinant(subMatrix);
     }
+
+    public static double Cofactor(Matrix matrix, int row, int col)
+    {
+        var cofactor = Minor(matrix, row, col);
+        return (row + col) % 2 == 1 ? -cofactor : cofactor;
+    }
 }
