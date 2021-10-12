@@ -195,4 +195,30 @@ public class Matrix
         var cofactor = Minor(matrix, row, col);
         return (row + col) % 2 == 1 ? -cofactor : cofactor;
     }
+
+    public static Matrix Inverse(Matrix matrix)
+    {
+        Matrix cofactorMatrix = new(matrix.Cells.GetLength(0), matrix.Cells.GetLength(1));
+        for (int x = 0; x < matrix.Cells.GetLength(0); x++)
+        {
+            for (int y = 0; y < matrix.Cells.GetLength(1); y++)
+            {
+                cofactorMatrix.Cells[x, y] = Cofactor(matrix, x, y);
+            }
+        }
+
+        var transposedMatrix = Transpose(cofactorMatrix);
+
+        var determinant = Determinant(matrix);
+        Matrix resultMatrix = new(matrix.Cells.GetLength(0), matrix.Cells.GetLength(1));
+        for (int x = 0; x < transposedMatrix.Cells.GetLength(0); x++)
+        {
+            for (int y = 0; y < transposedMatrix.Cells.GetLength(1); y++)
+            {
+                resultMatrix.Cells[x, y] = transposedMatrix.Cells[x, y] / determinant;
+            }
+        }
+
+        return resultMatrix;
+    }
 }
