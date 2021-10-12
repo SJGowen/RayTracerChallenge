@@ -77,4 +77,15 @@ public class ManipulatingMatricesTests
         Assert.Equal(-46, Matrix.Cofactor(matrix, 0, 2));
         Assert.Equal(-196, Matrix.Determinant(matrix));
     }
+
+    [Fact]
+    public void CalculatingDeterminantOf4x4Matrix()
+    {
+        Matrix matrix = new(-2, -8, 3, 5, -3, 1, 7, 3, 1, 2, -9, 6, -6, 7, 7, -9);
+        Assert.Equal(690, Matrix.Cofactor(matrix, 0, 0));
+        Assert.Equal(447, Matrix.Cofactor(matrix, 0, 1));
+        Assert.Equal(210, Matrix.Cofactor(matrix, 0, 2));
+        Assert.Equal(51, Matrix.Cofactor(matrix, 0, 3));
+        Assert.Equal(-4071, Matrix.Determinant(matrix));
+    }
 }
