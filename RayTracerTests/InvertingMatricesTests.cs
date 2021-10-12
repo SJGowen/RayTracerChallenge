@@ -51,4 +51,13 @@ public class InvertingMatricesTests
         Matrix expected = new(-0.04074, -0.07778, 0.14444, -0.22222, -0.07778, 0.03333, 0.36667, -0.33333, -0.02901, -0.14630, -0.10926, 0.12963, 0.17778, 0.06667, -0.26667, 0.33333);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void MultiplyingProductByItsInverse()
+    {
+        Matrix matrixA = new(3, -9, 7, 3, 3, -8, 2, -9, -4, 4, 4, 1, -6, 5, -1, 1);
+        Matrix matrixB = new(8, 2, 2, 2, 3, -1, 7, 0, 7, 0, 5, 4, 6, -2, 0, 5);
+        Matrix matrixC = matrixA * matrixB;
+        Assert.Equal(matrixA, matrixC * Matrix.Inverse(matrixB));
+    }
 }
