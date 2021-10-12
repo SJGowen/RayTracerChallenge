@@ -48,4 +48,13 @@ public class ManipulatingMatricesTests
         var caughtException = Assert.Throws<ArgumentException>(() => Matrix.SubMatrix(matrix, 0, 3));
         Assert.Equal("Value of argument col is greater than the number of columns in the Matrix", caughtException.Message);
     }
+
+    [Fact]
+    public void CalculatingMinorOf3x3Matrix()
+    {
+        Matrix matrix = new(3, 5, 0, 2, -1, -7, 6, -1, 5);
+        Matrix matrixB = Matrix.SubMatrix(matrix, 1, 0);
+        Assert.Equal(25, Matrix.Determinant(matrixB));
+        Assert.Equal(25, Matrix.Minor(matrix, 1, 0));
+    }
 }

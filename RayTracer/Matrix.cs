@@ -164,4 +164,10 @@ public class Matrix
 
         return new Matrix(cellValues);
     }
+
+    public static double Minor(Matrix matrix, int row, int col)
+    {
+        var subMatrix = SubMatrix(matrix, row, col);
+        return Determinant(subMatrix);
+    }
 }
