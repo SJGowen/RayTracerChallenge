@@ -210,15 +210,15 @@ public class Matrix
         var transposedMatrix = Transpose(cofactorMatrix);
 
         var determinant = Determinant(matrix);
-        Matrix resultMatrix = new(matrix.Cells.GetLength(0), matrix.Cells.GetLength(1));
+        Matrix inverseMatrix = new(matrix.Cells.GetLength(0), matrix.Cells.GetLength(1));
         for (int x = 0; x < transposedMatrix.Cells.GetLength(0); x++)
         {
             for (int y = 0; y < transposedMatrix.Cells.GetLength(1); y++)
             {
-                resultMatrix.Cells[x, y] = transposedMatrix.Cells[x, y] / determinant;
+                inverseMatrix.Cells[x, y] = transposedMatrix.Cells[x, y] / determinant;
             }
         }
 
-        return resultMatrix;
+        return inverseMatrix;
     }
 }
