@@ -5,7 +5,7 @@ using Xunit;
 
 namespace RayTracerTests;
 
-public class InvertingMatricesTests
+public class ManipulatingMatricesTests
 {
     [Fact]
     public void CalculatingDeterminant2x2Matrix()
