@@ -67,4 +67,14 @@ public class ManipulatingMatricesTests
         Assert.Equal(25, Matrix.Minor(matrix, 1, 0));
         Assert.Equal(-25, Matrix.Cofactor(matrix, 1, 0));
     }
+
+    [Fact]
+    public void CalculatingDeterminantOf3x3Matrix()
+    {
+        Matrix matrix = new(1, 2, 6, -5, 8, -4, 2, 6, 4);
+        Assert.Equal(56, Matrix.Cofactor(matrix, 0, 0));
+        Assert.Equal(12, Matrix.Cofactor(matrix, 0, 1));
+        Assert.Equal(-46, Matrix.Cofactor(matrix, 0, 2));
+        Assert.Equal(-196, Matrix.Determinant(matrix));
+    }
 }

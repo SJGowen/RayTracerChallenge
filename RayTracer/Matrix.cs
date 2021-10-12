@@ -131,7 +131,26 @@ public class Matrix
 
     public static double Determinant(Matrix matrix)
     {
-        return matrix.Cells[0, 0] * matrix.Cells[1, 1] - matrix.Cells[0, 1] * matrix.Cells[1, 0];
+        var sideLength = matrix.Cells.GetLength(0);
+        if (sideLength != matrix.Cells.GetLength(1))
+        {
+            throw new ArgumentException("You can only call Determinant on a Square Matrix");
+        }
+
+        var result = 0.0;
+        if (sideLength == 2)
+        {
+            result = matrix.Cells[0, 0] * matrix.Cells[1, 1] - matrix.Cells[0, 1] * matrix.Cells[1, 0];
+        }
+        else
+        {
+            for (int column = 0; column < sideLength; column++)
+            {
+                result += matrix.Cells[0, column] * Matrix.Cofactor(matrix, 0, column);
+            }
+        }
+
+        return result;
     }
 
     public static Matrix SubMatrix(Matrix matrix, int row, int col)
