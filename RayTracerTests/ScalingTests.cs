@@ -14,4 +14,13 @@ public class ScalingTests
         RayPoint expected = new(-8, 18, 32);
         Assert.Equal(expected, actual);
     }
+
+    [Fact]
+    public void ScalingMatrixAppliedToVector()
+    {
+        Scaling transform = new(2, 3, 4);
+        RayVector vector = new(-4, 6, 8);
+        RayVector actual = transform * vector;
+        RayVector expected = new(-8, 18, 32);
+    }
 }
