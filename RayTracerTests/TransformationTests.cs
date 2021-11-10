@@ -54,4 +54,12 @@ public class TransformationTests
         RayVector vector = new(-4, 6, 8);
         Assert.Equal(new RayVector(-2, 2, 2), inverse * vector);
     }
+
+    [Fact]
+    public void ReflectionIsScalingByNegativeValue()
+    {
+        Matrix transform = Matrix.Scaling(-1, 1, 1);
+        RayPoint point = new(2, 3, 4);
+        Assert.Equal(new RayPoint(-2, 3, 4), transform * point);
+    }
 }
