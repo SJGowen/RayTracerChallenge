@@ -70,7 +70,16 @@ public class TransformationTests
         RayPoint point = new(0, 1, 0);
         var halfQuarter = Matrix.RotationX(Math.PI / 4);
         var fullQuarter = Matrix.RotationX(Math.PI / 2);
-        Assert.Equal(halfQuarter * point, new RayPoint(0, Math.Sqrt(2) / 2, Math.Sqrt(2) / 2));
-        Assert.Equal(fullQuarter * point, new RayPoint(0, 0, 1));
+        Assert.Equal(new RayPoint(0, Math.Sqrt(2) / 2, Math.Sqrt(2) / 2), halfQuarter * point);
+        Assert.Equal(new RayPoint(0, 0, 1), fullQuarter * point);
+    }
+
+    [Fact]
+    public void InverseOfXRotationRotatesInTheOppositeDirection()
+    {
+        RayPoint point = new(0, 1, 0);
+        var halfQuarter = Matrix.RotationX(Math.PI / 4);
+        var inverse = Matrix.Inverse(halfQuarter);
+        Assert.Equal(new RayPoint(0, Math.Sqrt(2) / 2, -Math.Sqrt(2) / 2), inverse * point);
     }
 }
