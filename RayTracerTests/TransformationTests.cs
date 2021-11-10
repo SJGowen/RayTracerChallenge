@@ -92,4 +92,14 @@ public class TransformationTests
         Assert.Equal(new RayPoint(Math.Sqrt(2) / 2, 0, Math.Sqrt(2) / 2), halfQuarter * point);
         Assert.Equal(new RayPoint(1, 0, 0), fullQuarter * point);
     }
+
+    [Fact]
+    public void RotatingPointAroundTheZAxis()
+    {
+        RayPoint point = new(0, 1, 0);
+        var halfQuarter = Matrix.RotationZ(Math.PI / 4);
+        var fullQuarter = Matrix.RotationZ(Math.PI / 2);
+        Assert.Equal(new RayPoint(-Math.Sqrt(2) / 2, Math.Sqrt(2) / 2, 0), halfQuarter * point);
+        Assert.Equal(new RayPoint(-1, 0, 0), fullQuarter * point);
+    }
 }
