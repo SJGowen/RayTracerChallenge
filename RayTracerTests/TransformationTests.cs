@@ -36,6 +36,13 @@ public class TransformationTests
         Matrix transform = Matrix.Scaling(2, 3, 4);
         RayPoint point = new(-4, 6, 8);
         Assert.Equal(new RayPoint(-8, 18, 32), transform * point);
+    }
 
+    [Fact]
+    public void ScalingMatrixAppliedToVector()
+    {
+        Matrix transform = Matrix.Scaling(2, 3, 4);
+        RayVector vector = new(-4, 6, 8);
+        Assert.Equal(new RayVector(-8, 18, 32), vector * transform);
     }
 }
