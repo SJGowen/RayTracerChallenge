@@ -11,6 +11,12 @@ public class Matrix
         Cells = new double[x, y];
     }
 
+    public static Matrix Identity = new(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1);
+
     public Matrix(params double[] values)
     {
         if (Cells is null)

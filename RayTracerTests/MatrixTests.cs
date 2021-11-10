@@ -91,7 +91,7 @@ public class MatrixTests
     public void MultiplyingMatrixByIdentityMatrix()
     {
         Matrix matrix = new(0, 1, 2, 4, 1, 2, 4, 8, 2, 4, 8, 16, 4, 8, 16, 32);
-        Matrix identityMatrix = new(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        Matrix identityMatrix = Matrix.Identity;
         Matrix expected = new(0, 1, 2, 4, 1, 2, 4, 8, 2, 4, 8, 16, 4, 8, 16, 32);
         Matrix actual = matrix * identityMatrix;
         Assert.Equal(expected, actual);
@@ -101,7 +101,7 @@ public class MatrixTests
     public void MultiplyingTupleByIdentityMatrix()
     {
         RayTuple tuple = new(1, 2, 3, 4);
-        Matrix identityMatrix = new(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        Matrix identityMatrix = Matrix.Identity;
         RayTuple expected = new(1, 2, 3, 4);
         RayTuple actual = tuple * identityMatrix;
         Assert.Equal(expected, actual);
@@ -119,7 +119,7 @@ public class MatrixTests
     [Fact]
     public void TransposingIdentityMatrix()
     {
-        Matrix identityMatrix = new(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        Matrix identityMatrix = Matrix.Identity;
         Matrix actual = Matrix.Transpose(identityMatrix);
         Assert.Equal(identityMatrix, actual);
     }
