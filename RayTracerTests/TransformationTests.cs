@@ -1,4 +1,5 @@
 ﻿using RayTracer;
+using System;
 using Xunit;
 
 namespace RayTracerTests;
@@ -61,5 +62,15 @@ public class TransformationTests
         Matrix transform = Matrix.Scaling(-1, 1, 1);
         RayPoint point = new(2, 3, 4);
         Assert.Equal(new RayPoint(-2, 3, 4), transform * point);
+    }
+
+    [Fact]
+    public void RotatingPointAroundTheXAxis()
+    {
+        RayPoint point = new(0, 1, 0);
+        var halfQuarter = Matrix.RotationX(Math.PI / 4);
+        var fullQuarter = Matrix.RotationX(Math.PI / 2);
+        Assert.Equal(halfQuarter * point, new RayPoint(0, Math.Sqrt(2) / 2, Math.Sqrt(2) / 2));
+        Assert.Equal(fullQuarter * point, new RayPoint(0, 0, 1));
     }
 }

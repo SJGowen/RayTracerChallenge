@@ -79,6 +79,15 @@ public class Matrix
 
     public override int GetHashCode() => Cells.GetHashCode();
 
+    public static Matrix RotationX(double radians)
+    {
+        return new Matrix(
+            1, 0, 0, 0,
+            0, Math.Cos(radians), -Math.Sin(radians), 0,
+            0, Math.Sin(radians), Math.Cos(radians), 0,
+            0, 0, 0, 1);
+    }
+
     public static bool operator ==(Matrix matrix1, Matrix matrix2) => matrix1.IsEqual(matrix2);
 
     public static bool operator !=(Matrix matrix1, Matrix matrix2) => !matrix1.IsEqual(matrix2);
