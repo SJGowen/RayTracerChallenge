@@ -17,15 +17,6 @@ public class Matrix
         0, 0, 1, 0,
         0, 0, 0, 1);
 
-    public static Matrix Translation(double x, double y, double z)
-    {
-        return new Matrix(
-            1, 0, 0, x,
-            0, 1, 0, y,
-            0, 0, 1, z,
-            0, 0, 0, 1);
-    }
-
     public Matrix(params double[] values)
     {
         if (Cells is null)
@@ -39,6 +30,24 @@ public class Matrix
         }
 
         Add(values);
+    }
+
+    public static Matrix Translation(double x, double y, double z)
+    {
+        return new Matrix(
+            1, 0, 0, x,
+            0, 1, 0, y,
+            0, 0, 1, z,
+            0, 0, 0, 1);
+    }
+
+    public static Matrix Scaling(double x, double y, double z)
+    {
+        return new Matrix(
+            x, 0, 0, 0,
+            0, y, 0, 0,
+            0, 0, z, 0,
+            0, 0, 0, 1);
     }
 
     public void Add(params double[] values)
