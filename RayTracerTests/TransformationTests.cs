@@ -82,4 +82,14 @@ public class TransformationTests
         var inverse = Matrix.Inverse(halfQuarter);
         Assert.Equal(new RayPoint(0, Math.Sqrt(2) / 2, -Math.Sqrt(2) / 2), inverse * point);
     }
+
+    [Fact]
+    public void RotatingPointAroundTheYAxis()
+    {
+        RayPoint point = new(0, 0, 1);
+        var halfQuarter = Matrix.RotationY(Math.PI / 4);
+        var fullQuarter = Matrix.RotationY(Math.PI / 2);
+        Assert.Equal(new RayPoint(Math.Sqrt(2) / 2, 0, Math.Sqrt(2) / 2), halfQuarter * point);
+        Assert.Equal(new RayPoint(1, 0, 0), fullQuarter * point);
+    }
 }

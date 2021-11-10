@@ -88,6 +88,15 @@ public class Matrix
             0, 0, 0, 1);
     }
 
+    public static Matrix RotationY(double radians)
+    {
+        return new Matrix(
+            Math.Cos(radians), 0, Math.Sin(radians), 0,
+            0, 1, 0, 0,
+            -Math.Sin(radians), 0, Math.Cos(radians), 0,
+            0, 0, 0, 1);
+    }
+
     public static bool operator ==(Matrix matrix1, Matrix matrix2) => matrix1.IsEqual(matrix2);
 
     public static bool operator !=(Matrix matrix1, Matrix matrix2) => !matrix1.IsEqual(matrix2);
