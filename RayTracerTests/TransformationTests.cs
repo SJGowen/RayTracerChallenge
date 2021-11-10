@@ -21,4 +21,12 @@ public class TransformationTests
         RayPoint point = new(-3, 4, 5);
         Assert.Equal(new RayPoint(-8, 7, 3), inverse * point);
     }
+
+    [Fact]
+    public void TranslationDoesNotAffectVectors()
+    {
+        Matrix transform = Matrix.Translation(5, -3, 2);
+        RayVector vector = new(-3, 4, 5);
+        Assert.Equal(vector, transform * vector);
+    }
 }
