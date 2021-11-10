@@ -45,4 +45,13 @@ public class TransformationTests
         RayVector vector = new(-4, 6, 8);
         Assert.Equal(new RayVector(-8, 18, 32), vector * transform);
     }
+
+    [Fact]
+    public void MultiplyingVectorByInverseScalingMatrix()
+    {
+        Matrix transform = Matrix.Scaling(2, 3, 4);
+        Matrix inverse = Matrix.Inverse(transform);
+        RayVector vector = new(-4, 6, 8);
+        Assert.Equal(new RayVector(-2, 2, 2), inverse * vector);
+    }
 }
