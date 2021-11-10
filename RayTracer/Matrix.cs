@@ -6,16 +6,14 @@ public class Matrix
 {
     public double[,] Cells { get; }
 
+    public int Rows { get => Cells.GetLength(0); }
+
+    public int Columns { get => Cells.GetLength(1); }
+
     public Matrix(int x, int y)
     {
         Cells = new double[x, y];
     }
-
-    public static Matrix Identity = new(
-        1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, 0,
-        0, 0, 0, 1);
 
     public Matrix(params double[] values)
     {
@@ -31,6 +29,12 @@ public class Matrix
 
         Add(values);
     }
+
+    public static Matrix Identity = new(
+        1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1);
 
     public static Matrix Translation(double x, double y, double z)
     {
@@ -52,11 +56,11 @@ public class Matrix
 
     public void Add(params double[] values)
     {
-        for (int x = 0; x < Cells.GetLength(0); x++)
+        for (int x = 0; x < Rows; x++)
         {
-            for (int y = 0; y < Cells.GetLength(1); y++)
+            for (int y = 0; y < Columns; y++)
             {
-                Cells[x, y] = values[x * Cells.GetLength(1) + y];
+                Cells[x, y] = values[x * Columns + y];
             }
         }
     }
@@ -64,9 +68,9 @@ public class Matrix
     private bool IsEqual(Matrix matrix)
     {
         bool result = true;
-        for (int x = 0; x < Cells.GetLength(0); x++)
+        for (int x = 0; x < Rows; x++)
         {
-            for (int y = 0; y < Cells.GetLength(1); y++)
+            for (int y = 0; y < Columns; y++)
             {
                 result = result && Equality.Equal(Cells[x, y], matrix.Cells[x, y]);
             }
@@ -112,8 +116,8 @@ public class Matrix
 
     public static Matrix operator *(Matrix multiplicand, Matrix multiplier)
     {
-        if (4 != multiplicand.Cells.GetLength(0) || 4 != multiplier.Cells.GetLength(0) ||
-            4 != multiplicand.Cells.GetLength(1) || 4 != multiplier.Cells.GetLength(1))
+        if (4 != multiplicand.Rows || 4 != multiplier.Rows ||
+            4 != multiplicand.Columns || 4 != multiplier.Columns)
         {
             throw new ArgumentException("You can only multiply 4x4 Matrices");
         }
@@ -137,7 +141,7 @@ public class Matrix
 
     public static RayTuple operator *(Matrix matrix, RayTuple tuple)
     {
-        if (4 != matrix.Cells.GetLength(0) || 4 != matrix.Cells.GetLength(1))
+        if (4 != matrix.Rows || 4 != matrix.Columns)
         {
             throw new ArgumentException("You can only multiply a 4x4 Matrix by a Tuple");
         }
@@ -163,17 +167,17 @@ public class Matrix
 
     public static Matrix Transpose(Matrix matrix)
     {
-        if (matrix.Cells.GetLength(0) != matrix.Cells.GetLength(1))
+        if (matrix.Rows != matrix.Columns)
         {
             throw new ArgumentException("You can only call Transpose on a Square Matrix");
         }
 
-        double[] cellValues = new double[matrix.Cells.GetLength(0) * matrix.Cells.GetLength(1)];
-        for (int x = 0; x < matrix.Cells.GetLength(0); x++)
+        double[] cellValues = new double[matrix.Rows * matrix.Columns];
+        for (int x = 0; x < matrix.Rows; x++)
         {
-            for (int y = 0; y < matrix.Cells.GetLength(1); y++)
+            for (int y = 0; y < matrix.Columns; y++)
             {
-                cellValues.SetValue(matrix.Cells[x, y], x + y * matrix.Cells.GetLength(0));
+                cellValues.SetValue(matrix.Cells[x, y], x + y * matrix.Rows);
             }
         }
 
@@ -182,8 +186,8 @@ public class Matrix
 
     public static double Determinant(Matrix matrix)
     {
-        var sideLength = matrix.Cells.GetLength(0);
-        if (sideLength != matrix.Cells.GetLength(1))
+        var sideLength = matrix.Rows;
+        if (sideLength != matrix.Columns)
         {
             throw new ArgumentException("You can only call Determinant on a Square Matrix");
         }
@@ -206,21 +210,21 @@ public class Matrix
 
     public static Matrix SubMatrix(Matrix matrix, int row, int col)
     {
-        if (row >= matrix.Cells.GetLength(0))
+        if (row >= matrix.Rows)
         {
             throw new ArgumentException("Value of argument row is greater than the number of rows in the Matrix");
         }
 
-        if (col >= matrix.Cells.GetLength(1))
+        if (col >= matrix.Columns)
         {
             throw new ArgumentException("Value of argument col is greater than the number of columns in the Matrix");
         }
 
         var cellCount = 0;
-        double[] cellValues = new double[(matrix.Cells.GetLength(0) - 1) * (matrix.Cells.GetLength(1) - 1)];
-        for (int x = 0; x < matrix.Cells.GetLength(0); x++)
+        double[] cellValues = new double[(matrix.Rows - 1) * (matrix.Columns - 1)];
+        for (int x = 0; x < matrix.Rows; x++)
         {
-            for (int y = 0; y < matrix.Cells.GetLength(1); y++)
+            for (int y = 0; y < matrix.Columns; y++)
             {
                 if (x == row || y == col)
                 {
@@ -249,10 +253,10 @@ public class Matrix
 
     public static Matrix Inverse(Matrix matrix)
     {
-        Matrix cofactorMatrix = new(matrix.Cells.GetLength(0), matrix.Cells.GetLength(1));
-        for (int x = 0; x < matrix.Cells.GetLength(0); x++)
+        Matrix cofactorMatrix = new(matrix.Rows, matrix.Columns);
+        for (int x = 0; x < matrix.Rows; x++)
         {
-            for (int y = 0; y < matrix.Cells.GetLength(1); y++)
+            for (int y = 0; y < matrix.Columns; y++)
             {
                 cofactorMatrix.Cells[x, y] = Cofactor(matrix, x, y);
             }
@@ -261,10 +265,10 @@ public class Matrix
         var transposedMatrix = Transpose(cofactorMatrix);
 
         var determinant = Determinant(matrix);
-        Matrix inverseMatrix = new(matrix.Cells.GetLength(0), matrix.Cells.GetLength(1));
-        for (int x = 0; x < transposedMatrix.Cells.GetLength(0); x++)
+        Matrix inverseMatrix = new(matrix.Rows, matrix.Columns);
+        for (int x = 0; x < transposedMatrix.Rows; x++)
         {
-            for (int y = 0; y < transposedMatrix.Cells.GetLength(1); y++)
+            for (int y = 0; y < transposedMatrix.Columns; y++)
             {
                 inverseMatrix.Cells[x, y] = transposedMatrix.Cells[x, y] / determinant;
             }
