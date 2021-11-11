@@ -158,10 +158,13 @@ public class TransformationTests
         var rotationX = Matrix.RotationX(Math.PI / 2);
         var scaling = Matrix.Scaling(5, 5, 5);
         var translation = Matrix.Translation(10, 5, 7);
+        // Apply rotation first
         var point2 = rotationX * point1;
         Assert.Equal(new RayPoint(1, -1, 0), point2);
+        // Then apply scaling
         var point3 = scaling * point2;
         Assert.Equal(new RayPoint(5, -5, 0), point3);
+        // Then apply translation
         var point4 = translation * point3;
         Assert.Equal(new RayPoint(15, 0, 7), point4);
     }
