@@ -168,4 +168,15 @@ public class TransformationTests
         var point4 = translation * point3;
         Assert.Equal(new RayPoint(15, 0, 7), point4);
     }
+
+    [Fact]
+    public void ChainedTransformationsMustBeAppliedInReverseOrder()
+    {
+        RayPoint point = new(1, 0, 1);
+        var rotationX = Matrix.RotationX(Math.PI / 2);
+        var scaling = Matrix.Scaling(5, 5, 5);
+        var translation = Matrix.Translation(10, 5, 7);
+        var transformation = translation * scaling * rotationX;
+        Assert.Equal(new RayPoint(15, 0, 7), transformation * point);
+    }
 }
