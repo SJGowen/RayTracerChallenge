@@ -150,4 +150,19 @@ public class TransformationTests
         RayPoint point = new(2, 3, 4);
         Assert.Equal(new RayPoint(2, 3, 7), transform * point);
     }
+
+    [Fact]
+    public void IndividualTransformationsAreAppliedInSequence()
+    {
+        RayPoint point1 = new(1, 0, 1);
+        var rotationX = Matrix.RotationX(Math.PI / 2);
+        var scaling = Matrix.Scaling(5, 5, 5);
+        var translation = Matrix.Translation(10, 5, 7);
+        var point2 = rotationX * point1;
+        Assert.Equal(new RayPoint(1, -1, 0), point2);
+        var point3 = scaling * point2;
+        Assert.Equal(new RayPoint(5, -5, 0), point3);
+        var point4 = translation * point3;
+        Assert.Equal(new RayPoint(15, 0, 7), point4);
+    }
 }
