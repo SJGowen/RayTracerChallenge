@@ -2,7 +2,7 @@
 
 namespace VirtualProjectiles;
 
-internal class Projectile
+public class Projectile
 {
     public RayTuple Position { get; }
     public RayTuple Velocity { get; }

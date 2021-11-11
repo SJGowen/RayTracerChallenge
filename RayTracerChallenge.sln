@@ -7,7 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracerTests", "RayTracer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RayTracer", "RayTracer\RayTracer.csproj", "{7DBA8851-E3A5-41ED-B9B3-DC08104C6F12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualProjectiles", "VirtualProjectiles\VirtualProjectiles.csproj", "{28E50B87-CCE4-4C21-8534-57FCB351732C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualProjectiles", "VirtualProjectiles\VirtualProjectiles.csproj", "{28E50B87-CCE4-4C21-8534-57FCB351732C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{53D78610-C059-41AB-8D75-D5CBCA7E19C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00-ProjectileDemo", "00-ProjectileDemo\00-ProjectileDemo.csproj", "{44D90A8A-F9C8-4AC3-991B-690D656C926B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ProjectileCanvasDemo", "01-ProjectileCanvasDemo\01-ProjectileCanvasDemo.csproj", "{59BC557B-21AF-47EF-A3EE-C01759A6218C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +33,21 @@ Global
 		{28E50B87-CCE4-4C21-8534-57FCB351732C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28E50B87-CCE4-4C21-8534-57FCB351732C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28E50B87-CCE4-4C21-8534-57FCB351732C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44D90A8A-F9C8-4AC3-991B-690D656C926B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D90A8A-F9C8-4AC3-991B-690D656C926B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D90A8A-F9C8-4AC3-991B-690D656C926B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D90A8A-F9C8-4AC3-991B-690D656C926B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BC557B-21AF-47EF-A3EE-C01759A6218C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BC557B-21AF-47EF-A3EE-C01759A6218C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BC557B-21AF-47EF-A3EE-C01759A6218C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BC557B-21AF-47EF-A3EE-C01759A6218C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44D90A8A-F9C8-4AC3-991B-690D656C926B} = {53D78610-C059-41AB-8D75-D5CBCA7E19C4}
+		{59BC557B-21AF-47EF-A3EE-C01759A6218C} = {53D78610-C059-41AB-8D75-D5CBCA7E19C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C930539-535B-4F9F-A4B7-0CE9D0A84DF6}

@@ -2,7 +2,7 @@
 
 namespace VirtualProjectiles;
 
-internal class Environment
+public class Environment
 {
     public RayVector Gravity { get; }
     public RayVector Wind { get; }

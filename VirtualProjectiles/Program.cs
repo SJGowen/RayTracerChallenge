@@ -32,7 +32,7 @@ public class Program
 
     private static void DrawProjectileTrack(Canvas canvas, Environment environment, RayPoint start, double y, int i)
     {
-        var velocity = RayVector.Normalisation(new RayVector(1, y, 0)) * 11.25;
+        var velocity = new RayVector(1, y, 0).Normalise() * 11.25;
         Projectile projectile = new(start, velocity);
         string binary = Convert.ToString(i, 2);
         while (binary.Length < 3) binary = "0" + binary;
@@ -50,7 +50,7 @@ public class Program
         {
             for (double deltaY = 0.4; deltaY <= 0.8; deltaY += 0.01)
             {
-                Projectile projectile = new(new RayPoint(0, 1, 0), RayVector.Normalisation(new RayVector(deltaX, deltaY, 0)));
+                Projectile projectile = new(new RayPoint(0, 1, 0), new RayVector(deltaX, deltaY, 0).Normalise());
                 Environment environment = new(new RayVector(0, -0.1, 0), new RayVector(-0.01, 0, 0));
                 //Console.WriteLine($"Value X={deltaX,4:N2} Y={deltaY,4:N2} gives Verticle Velocity of {projectile.Velocity.X,5:N2} Horizontal Velocity of {projectile.Velocity.Y,5:N2}");
                 int ticksInAir = 0;

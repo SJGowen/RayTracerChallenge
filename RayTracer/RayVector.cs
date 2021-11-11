@@ -20,3 +20,8 @@ public class RayVector : RayTuple
             (vector1.Z * vector2.X) - (vector1.X * vector2.Z), 
             (vector1.X * vector2.Y) - (vector1.Y * vector2.X));
 }
+
+public static class RayVectorExtensions
+{
+    public static RayVector Normalise(this RayVector vector) => RayVector.Normalisation(vector);
+ }
