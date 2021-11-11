@@ -54,6 +54,15 @@ public class Matrix
             0, 0, 0, 1);
     }
 
+    public static Matrix Shearing(double xy, double xz, double yx, double yz, double zx, double zy)
+    {
+        return new Matrix(
+            1, xy, xz, 0,
+            yx, 1, yz, 0,
+            zx, zy, 1, 0,
+            0, 0, 0, 1);
+    }
+
     public void Add(params double[] values)
     {
         for (int x = 0; x < Rows; x++)

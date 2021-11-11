@@ -102,4 +102,12 @@ public class TransformationTests
         Assert.Equal(new RayPoint(-Math.Sqrt(2) / 2, Math.Sqrt(2) / 2, 0), halfQuarter * point);
         Assert.Equal(new RayPoint(-1, 0, 0), fullQuarter * point);
     }
+
+    [Fact]
+    public void AShearingTransformationMovesXInProportionToY()
+    {
+        Matrix transform = Matrix.Shearing(1, 0, 0, 0, 0, 0);
+        RayPoint point = new(2, 3, 4);
+        Assert.Equal(new RayPoint(5, 3, 4), transform * point);
+    }
 }
