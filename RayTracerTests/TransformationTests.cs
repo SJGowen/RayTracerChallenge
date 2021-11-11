@@ -118,4 +118,12 @@ public class TransformationTests
         RayPoint point = new(2, 3, 4);
         Assert.Equal(new RayPoint(6, 3, 4), transform * point);
     }
+
+    [Fact]
+    public void AShearingTransformationMovesYInProportionToX()
+    {
+        Matrix transform = Matrix.Shearing(0, 0, 1, 0, 0, 0);
+        RayPoint point = new(2, 3, 4);
+        Assert.Equal(new RayPoint(2, 5, 4), transform * point);
+    }
 }
