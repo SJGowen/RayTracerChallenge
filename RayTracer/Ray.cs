@@ -10,4 +10,9 @@ public class Ray
         Origin = origin;
         Direction = direction;
     }
+
+    public RayTuple Position(double t)
+    {
+        return Origin + Direction * t;
+    }
 }

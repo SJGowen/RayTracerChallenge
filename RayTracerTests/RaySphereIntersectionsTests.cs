@@ -15,5 +15,15 @@ public class RaySphereIntersectionsTests
         Assert.Equal(origin, ray.Origin);
         Assert.Equal(direction, ray.Direction);
     }
+
+    [Fact]
+    public void ComputingAPointFromADistance()
+    {
+        Ray ray = new(new RayPoint(2, 3, 4), new RayVector(1, 0, 0));
+        Assert.Equal(new RayPoint(2, 3, 4), ray.Position(0));
+        Assert.Equal(new RayPoint(3, 3, 4), ray.Position(1));
+        Assert.Equal(new RayPoint(1, 3, 4), ray.Position(-1));
+        Assert.Equal(new RayPoint(4.5, 3, 4), ray.Position(2.5));
+    }
 }
 
