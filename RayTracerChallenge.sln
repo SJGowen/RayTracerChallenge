@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "00-ProjectileDemo", "00-Pro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-ProjectileCanvasDemo", "01-ProjectileCanvasDemo\01-ProjectileCanvasDemo.csproj", "{59BC557B-21AF-47EF-A3EE-C01759A6218C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-ClockDemo", "02-ClockDemo\02-ClockDemo.csproj", "{28AA4C5A-BF0A-4F8A-8360-83290BA007BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{59BC557B-21AF-47EF-A3EE-C01759A6218C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59BC557B-21AF-47EF-A3EE-C01759A6218C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59BC557B-21AF-47EF-A3EE-C01759A6218C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28AA4C5A-BF0A-4F8A-8360-83290BA007BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28AA4C5A-BF0A-4F8A-8360-83290BA007BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28AA4C5A-BF0A-4F8A-8360-83290BA007BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28AA4C5A-BF0A-4F8A-8360-83290BA007BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{44D90A8A-F9C8-4AC3-991B-690D656C926B} = {53D78610-C059-41AB-8D75-D5CBCA7E19C4}
 		{59BC557B-21AF-47EF-A3EE-C01759A6218C} = {53D78610-C059-41AB-8D75-D5CBCA7E19C4}
+		{28AA4C5A-BF0A-4F8A-8360-83290BA007BD} = {53D78610-C059-41AB-8D75-D5CBCA7E19C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C930539-535B-4F9F-A4B7-0CE9D0A84DF6}

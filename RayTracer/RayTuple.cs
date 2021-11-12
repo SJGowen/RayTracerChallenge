@@ -1,4 +1,6 @@
-﻿namespace RayTracer;
+﻿using System;
+
+namespace RayTracer;
 public class RayTuple
 {
     public double X { get; }
@@ -14,9 +16,14 @@ public class RayTuple
         W = w;
     }
 
+    //public override string ToString()
+    //{
+    //    return $"({X},{Y},{Z},{W})";
+    //}
+
     public override string ToString()
     {
-        return $"({X},{Y},{Z},{W})";
+        return $"{Math.Round(X)},{Math.Round(Y)},{Math.Round(Z)},{Math.Round(W)}";
     }
 
     public bool IsPoint => W == 1.0;
