@@ -1,5 +1,4 @@
 ﻿using RayTracer;
-using System.Drawing;
 
 namespace _02_ClockDemo;
 
@@ -27,6 +26,6 @@ public class Program
 
         var filename = "Clock.ppm";
         PPMFile.CanvasToPPM(canvas, filename);
-        Console.WriteLine($"Clock Hours saved in \"{filename}\"");
+        Console.WriteLine($"Image containing Clock Hours saved in \"{filename}\"");
     }
 }
