@@ -43,5 +43,4 @@ public class Program
     {
         return new Projectile(projectile.Position + projectile.Velocity, projectile.Velocity + world.Gravity + world.Wind);
     }
-
 }
