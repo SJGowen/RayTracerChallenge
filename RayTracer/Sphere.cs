@@ -5,25 +5,25 @@ namespace RayTracer;
 
 public class Sphere : Shape
 {
-    public Sphere()
+    public override Intersections Intersects(Ray ray)
     {
+        return Discriminant(ray) < 0 ? new Intersections() : LocalIntersects(ray);
     }
 
-    public List<double> Intersects(Ray ray)
-    {
-        return Discriminant(ray) < 0 ? new List<double>() : LocalIntersects(ray);
-    }
-
-    private static List<double> LocalIntersects(Ray ray)
+    public override Intersections LocalIntersects(Ray ray)
     {
         var sphereToRay = ray.Origin - new RayPoint(0, 0, 0);
         var a = Dot(ray.Direction, ray.Direction);
         var b = 2 * Dot(ray.Direction, sphereToRay);
-        List<double> result = new();
-        result.Add((-b - Math.Sqrt(Discriminant(ray))) / (2 * a));
-        result.Add((-b + Math.Sqrt(Discriminant(ray))) / (2 * a));
-        result.Sort();
-        return result;
+
+        var sqrtDiscriminantRay = Math.Sqrt(Discriminant(ray));
+        var d1 = (-b - sqrtDiscriminantRay) / (2 * a);
+        var d2 = (-b + sqrtDiscriminantRay) / (2 * a);
+
+        Intersection i1 = new(d1, this);
+        Intersection i2 = new(d2, this);
+
+        return new Intersections(i1, i2);
     }
 
     public static double Discriminant(Ray ray)

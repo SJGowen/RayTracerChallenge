@@ -1,5 +1,8 @@
 ﻿namespace RayTracer;
 
-public class Shape
+public abstract class Shape
 {
+    public abstract Intersections Intersects(Ray ray);
+
+    public abstract Intersections LocalIntersects(Ray ray);
 }

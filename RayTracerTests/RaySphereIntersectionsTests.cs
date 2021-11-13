@@ -32,10 +32,10 @@ public class RaySphereIntersectionsTests
     {
         Ray ray = new(new RayPoint(0, 0, -5), new RayVector(0, 0, 1));
         Sphere sphere = new();
-        List<double> intersects = sphere.Intersects(ray);
-        Assert.Equal(2, intersects.Count);
-        Assert.Equal(4.0, intersects[0]);
-        Assert.Equal(6.0, intersects[1]);
+        Intersections xs = sphere.Intersects(ray);
+        Assert.Equal(2, xs.Intersects.Count);
+        Assert.Equal(4.0, xs.Intersects[0].Distance);
+        Assert.Equal(6.0, xs.Intersects[1].Distance);
     }
 
     [Fact]
@@ -43,10 +43,10 @@ public class RaySphereIntersectionsTests
     {
         Ray ray = new(new RayPoint(0, 1, -5), new RayVector(0, 0, 1));
         Sphere sphere = new();
-        List<double> intersects = sphere.Intersects(ray);
-        Assert.Equal(2, intersects.Count);
-        Assert.Equal(5.0, intersects[0]);
-        Assert.Equal(5.0, intersects[1]);
+        Intersections xs = sphere.Intersects(ray);
+        Assert.Equal(2, xs.Intersects.Count);
+        Assert.Equal(5.0, xs.Intersects[0].Distance);
+        Assert.Equal(5.0, xs.Intersects[1].Distance);
     }
 
     [Fact]
@@ -54,8 +54,8 @@ public class RaySphereIntersectionsTests
     {
         Ray ray = new(new RayPoint(0, 2, -5), new RayVector(0, 0, 1));
         Sphere sphere = new();
-        List<double> intersects = sphere.Intersects(ray);
-        Assert.Empty(intersects);
+        Intersections xs = sphere.Intersects(ray);
+        Assert.Empty(xs.Intersects);
     }
 
     [Fact]
@@ -63,10 +63,10 @@ public class RaySphereIntersectionsTests
     {
         Ray ray = new(new RayPoint(0, 0, 0), new RayVector(0, 0, 1));
         Sphere sphere = new();
-        List<double> intersects = sphere.Intersects(ray);
-        Assert.Equal(2, intersects.Count);
-        Assert.Equal(-1.0, intersects[0]);
-        Assert.Equal(1.0, intersects[1]);
+        Intersections xs = sphere.Intersects(ray);
+        Assert.Equal(2, xs.Intersects.Count);
+        Assert.Equal(-1.0, xs.Intersects[0].Distance);
+        Assert.Equal(1.0, xs.Intersects[1].Distance);
     }
 
     [Fact]
@@ -74,19 +74,19 @@ public class RaySphereIntersectionsTests
     {
         Ray ray = new(new RayPoint(0, 0, 5), new RayVector(0, 0, 1));
         Sphere sphere = new();
-        List<double> intersects = sphere.Intersects(ray);
-        Assert.Equal(2, intersects.Count);
-        Assert.Equal(-6.0, intersects[0]);
-        Assert.Equal(-4.0, intersects[1]);
+        Intersections xs = sphere.Intersects(ray);
+        Assert.Equal(2, xs.Intersects.Count);
+        Assert.Equal(-6.0, xs.Intersects[0].Distance);
+        Assert.Equal(-4.0, xs.Intersects[1].Distance);
     }
 
     [Fact]
     public void AnIntersectionEncapsulatesTAndObject()
     {
         Sphere sphere = new();
-        Intersection intersection = new(3.5, sphere);
-        Assert.Equal(3.5, intersection.Distance);
-        Assert.Equal(sphere, intersection.Shape);
+        Intersection i1 = new(3.5, sphere);
+        Assert.Equal(3.5, i1.Distance);
+        Assert.Equal(sphere, i1.Shape);
     }
 
     [Fact]
@@ -99,6 +99,17 @@ public class RaySphereIntersectionsTests
         Assert.Equal(2, xs.Intersects.Count);
         Assert.Equal(1, xs.Intersects[0].Distance);
         Assert.Equal(2, xs.Intersects[1].Distance);
+    }
+
+    [Fact]
+    public void IntersectSetsTheObjectOnTheIntersection()
+    {
+        Ray ray = new(new RayPoint(0, 0, -5), new RayVector(0, 0, 1));
+        Sphere sphere = new();
+        var xs = sphere.Intersects(ray);
+        Assert.Equal(2, xs.Intersects.Count);
+        Assert.Equal(sphere, xs.Intersects[0].Shape);
+        Assert.Equal(sphere, xs.Intersects[1].Shape);
     }
 }
 
