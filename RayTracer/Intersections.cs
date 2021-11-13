@@ -5,7 +5,7 @@ namespace RayTracer;
 
 public class Intersections
 {
-    public List<Intersection> Intersects { get; } = new();
+    public List<Intersection> Intersects { get; }
 
     public Intersections(params Intersection[] intersections)
     {
