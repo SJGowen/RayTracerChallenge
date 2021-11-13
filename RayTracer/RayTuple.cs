@@ -53,4 +53,6 @@ public class RayTuple
 
     public static RayTuple operator /(RayTuple tuple, double divisor) =>
         new(tuple.X / divisor, tuple.Y / divisor, tuple.Z / divisor, tuple.W / divisor);
+
+    public double Dot(RayTuple tuple) => X * tuple.X + Y * tuple.Y + Z * tuple.Z + tuple.W * W;
 }
