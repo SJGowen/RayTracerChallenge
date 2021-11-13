@@ -55,7 +55,7 @@ public class RaySphereIntersectionsTests
         Ray ray = new(new RayPoint(0, 2, -5), new RayVector(0, 0, 1));
         Sphere sphere = new();
         List<double> intersects = sphere.Intersects(ray);
-        Assert.Equal(0, intersects.Count);
+        Assert.Empty(intersects);
     }
 
     [Fact]
