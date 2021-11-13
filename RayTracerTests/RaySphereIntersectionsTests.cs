@@ -79,5 +79,14 @@ public class RaySphereIntersectionsTests
         Assert.Equal(-6.0, intersects[0]);
         Assert.Equal(-4.0, intersects[1]);
     }
+
+    [Fact]
+    public void AnIntersectionEncapsulatesTAndObject()
+    {
+        Sphere sphere = new();
+        var intersection = new Intersection(3.5, sphere);
+        Assert.Equal(3.5, intersection.Distance);
+        Assert.Equal(sphere, intersection.Shape);
+    }
 }
 

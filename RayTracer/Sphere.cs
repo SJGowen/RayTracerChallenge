@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace RayTracer;
 
-public class Sphere
+public class Sphere : Shape
 {
     public Sphere()
     {
